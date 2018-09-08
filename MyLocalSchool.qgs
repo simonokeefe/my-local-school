@@ -1,0 +1,2838 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.2.2-Bonn" projectname="">
+  <homePath path=""/>
+  <title></title>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
+  <trust active="0"/>
+  <projectCrs>
+    <spatialrefsys>
+      <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+      <srsid>3857</srsid>
+      <srid>3857</srid>
+      <authid>EPSG:3857</authid>
+      <description>WGS 84 / Pseudo-Mercator</description>
+      <projectionacronym>merc</projectionacronym>
+      <ellipsoidacronym>WGS84</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </projectCrs>
+  <layer-tree-group>
+    <customproperties/>
+    <layer-tree-layer id="det_schools_164c8312_aa87_4fb1_bde3_6aab81f20b77" providerKey="spatialite" name="Government Primary Schools" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;det_schools&quot; (geometry) sql=&quot;education_sector&quot; = 'Government' and &quot;school_type&quot; IN ( 'Primary' , 'Pri/Sec' )" expanded="1" checked="Qt::Unchecked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="msz_schools_3ef818bc_68c1_40d1_8cb6_547bc36ea41c" providerKey="spatialite" name="msz_schools" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;msz_schools&quot; (geometry) sql=&quot;type&quot; IN ( 'Primary' , 'Combined' )" expanded="1" checked="Qt::Unchecked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="psma_lga_91d1ff93_d668_40cc_b1d8_8f6fbafc5385" providerKey="spatialite" name="LGA" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;psma_lga&quot; (geometry) sql=" expanded="1" checked="Qt::Checked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="abs_meshblocks_points_6878cf07_0f99_4e5f_86d3_cd8eb1bb3dda" providerKey="spatialite" name="abs_meshblocks_points" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;abs_meshblocks_points&quot; (geometry) sql=" expanded="1" checked="Qt::Checked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="abs_meshblocks_500c5b10_1585_4739_b9e2_edefc26a0120" providerKey="spatialite" name="abs_meshblocks" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;abs_meshblocks&quot; (geometry) sql=" expanded="1" checked="Qt::Unchecked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="road_nodes_5cac4f4a_e376_403c_84a3_70712a18ff75" providerKey="spatialite" name="road_nodes" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;road_nodes&quot; (geometry) sql=" expanded="1" checked="Qt::Unchecked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="wcc_subdivision_stages_points_37f7e01b_56e4_45cd_a9ef_52bc5893f528" providerKey="spatialite" name="wcc_subdivision_stages_points" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;wcc_subdivision_stages_points&quot; (geometry) sql=" expanded="1" checked="Qt::Checked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="wcc_subdivision_stages_d7227ce9_38d1_4485_b80f_1e2d84783705" providerKey="spatialite" name="wcc_subdivision_stages" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;wcc_subdivision_stages&quot; (geometry) sql=" expanded="1" checked="Qt::Unchecked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="road_arcs_56673e37_890c_4fba_a1b2_5bb21f237e31" providerKey="spatialite" name="OSM Roads" source="dbname='C:/GovHack2018/MyLocalSchool.sqlite' table=&quot;road_arcs&quot; (geometry) sql=" expanded="1" checked="Qt::Checked">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="OpenStreetMap_49d9d3cf_f44e_4bed_aa95_393a8f3d19e1" providerKey="wms" name="OpenStreetMap" source="crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=http://tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png" expanded="1" checked="Qt::Checked">
+      <customproperties/>
+    </layer-tree-layer>
+    <custom-order enabled="0">
+      <item>psma_lga_91d1ff93_d668_40cc_b1d8_8f6fbafc5385</item>
+      <item>road_arcs_56673e37_890c_4fba_a1b2_5bb21f237e31</item>
+      <item>OpenStreetMap_49d9d3cf_f44e_4bed_aa95_393a8f3d19e1</item>
+      <item>det_schools_164c8312_aa87_4fb1_bde3_6aab81f20b77</item>
+      <item>abs_meshblocks_500c5b10_1585_4739_b9e2_edefc26a0120</item>
+      <item>wcc_subdivision_stages_d7227ce9_38d1_4485_b80f_1e2d84783705</item>
+      <item>wcc_subdivision_stages_points_37f7e01b_56e4_45cd_a9ef_52bc5893f528</item>
+      <item>msz_schools_3ef818bc_68c1_40d1_8cb6_547bc36ea41c</item>
+      <item>abs_meshblocks_points_6878cf07_0f99_4e5f_86d3_cd8eb1bb3dda</item>
+      <item>road_nodes_5cac4f4a_e376_403c_84a3_70712a18ff75</item>
+    </custom-order>
+  </layer-tree-group>
+  <snapping-settings mode="2" unit="1" intersection-snapping="0" tolerance="10" enabled="1" type="1">
+    <individual-layer-settings>
+      <layer-setting id="abs_meshblocks_500c5b10_1585_4739_b9e2_edefc26a0120" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="msz_schools_3ef818bc_68c1_40d1_8cb6_547bc36ea41c" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="det_schools_164c8312_aa87_4fb1_bde3_6aab81f20b77" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="road_nodes_5cac4f4a_e376_403c_84a3_70712a18ff75" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="wcc_subdivision_stages_points_37f7e01b_56e4_45cd_a9ef_52bc5893f528" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="psma_lga_91d1ff93_d668_40cc_b1d8_8f6fbafc5385" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="abs_meshblocks_points_6878cf07_0f99_4e5f_86d3_cd8eb1bb3dda" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="road_arcs_56673e37_890c_4fba_a1b2_5bb21f237e31" units="1" tolerance="10" enabled="1" type="1"/>
+      <layer-setting id="wcc_subdivision_stages_d7227ce9_38d1_4485_b80f_1e2d84783705" units="1" tolerance="10" enabled="1" type="1"/>
+    </individual-layer-settings>
+  </snapping-settings>
+  <relations/>
+  <mapcanvas annotationsVisible="1" name="theMapCanvas">
+    <units>meters</units>
+    <extent>
+      <xmin>16101266.49929909035563469</xmin>
+      <ymin>-4565793.50521710608154535</ymin>
+      <xmax>16104948.24412409588694572</xmax>
+      <ymax>-4563562.7429370591416955</ymax>
+    </extent>
+    <rotation>0</rotation>
+    <destinationsrs>
+      <spatialrefsys>
+        <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+        <srsid>3857</srsid>
+        <srid>3857</srid>
+        <authid>EPSG:3857</authid>
+        <description>WGS 84 / Pseudo-Mercator</description>
+        <projectionacronym>merc</projectionacronym>
+        <ellipsoidacronym>WGS84</ellipsoidacronym>
+        <geographicflag>false</geographicflag>
+      </spatialrefsys>
+    </destinationsrs>
+    <rendermaptile>0</rendermaptile>
+  </mapcanvas>
+  <legend updateDrawingOrder="true">
+    <legendlayer drawingOrder="-1" open="true" name="Government Primary Schools" checked="Qt::Unchecked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="0" layerid="det_schools_164c8312_aa87_4fb1_bde3_6aab81f20b77"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="msz_schools" checked="Qt::Unchecked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="0" layerid="msz_schools_3ef818bc_68c1_40d1_8cb6_547bc36ea41c"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="LGA" checked="Qt::Checked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="1" layerid="psma_lga_91d1ff93_d668_40cc_b1d8_8f6fbafc5385"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="abs_meshblocks_points" checked="Qt::Checked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="1" layerid="abs_meshblocks_points_6878cf07_0f99_4e5f_86d3_cd8eb1bb3dda"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="abs_meshblocks" checked="Qt::Unchecked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="0" layerid="abs_meshblocks_500c5b10_1585_4739_b9e2_edefc26a0120"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="road_nodes" checked="Qt::Unchecked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="0" layerid="road_nodes_5cac4f4a_e376_403c_84a3_70712a18ff75"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="wcc_subdivision_stages_points" checked="Qt::Checked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="1" layerid="wcc_subdivision_stages_points_37f7e01b_56e4_45cd_a9ef_52bc5893f528"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="wcc_subdivision_stages" checked="Qt::Unchecked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="0" layerid="wcc_subdivision_stages_d7227ce9_38d1_4485_b80f_1e2d84783705"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="OSM Roads" checked="Qt::Checked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="1" layerid="road_arcs_56673e37_890c_4fba_a1b2_5bb21f237e31"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" name="OpenStreetMap" checked="Qt::Checked" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" visible="1" layerid="OpenStreetMap_49d9d3cf_f44e_4bed_aa95_393a8f3d19e1"/>
+      </filegroup>
+    </legendlayer>
+  </legend>
+  <mapViewDocks/>
+  <mapViewDocks3D/>
+  <projectlayers>
+    <maplayer hasScaleBasedVisibilityFlag="0" maxScale="0" refreshOnNotifyMessage="" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" autoRefreshTime="0" minScale="1e+8" type="raster">
+      <extent>
+        <xmin>-20037508.34278924390673637</xmin>
+        <ymin>-20037508.34278925508260727</ymin>
+        <xmax>20037508.34278924390673637</xmax>
+        <ymax>20037508.34278924390673637</ymax>
+      </extent>
+      <id>OpenStreetMap_49d9d3cf_f44e_4bed_aa95_393a8f3d19e1</id>
+      <datasource>crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=http://tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>OpenStreetMap</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo-Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>true</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+      </resourceMetadata>
+      <customproperties>
+        <property value="Undefined" key="identify/format"/>
+        <property value="OpenStreetMap" key="ol_layer_type"/>
+      </customproperties>
+      <provider>wms</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="0"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer band="1" opacity="1" alphaBand="-1" type="singlebandcolordata">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation saturation="0" colorizeOn="0" colorizeRed="255" colorizeGreen="128" grayscaleMode="0" colorizeStrength="100" colorizeBlue="128"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Polygon" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="1" minScale="1e+8" type="vector">
+      <id>abs_meshblocks_500c5b10_1585_4739_b9e2_edefc26a0120</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="abs_meshblocks" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>abs_meshblocks</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs</proj4>
+          <srsid>3415</srsid>
+          <srid>4283</srid>
+          <authid>EPSG:4283</authid>
+          <description>GDA94</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>GRS80</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="fill">
+            <layer pass="0" class="SimpleFill" enabled="1" locked="0">
+              <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+              <prop v="152,125,183,255" k="color"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,35,35,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0.26" k="outline_width"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="no" k="style"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="1" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="mb_16ppid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="dt_create">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="dt_retire">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="mb_16pid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="mb_16ppid" index="1" name=""/>
+        <alias field="dt_create" index="2" name=""/>
+        <alias field="dt_retire" index="3" name=""/>
+        <alias field="mb_16pid" index="4" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="mb_16ppid" applyOnUpdate="0" expression=""/>
+        <default field="dt_create" applyOnUpdate="0" expression=""/>
+        <default field="dt_retire" applyOnUpdate="0" expression=""/>
+        <default field="mb_16pid" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="mb_16ppid" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="dt_create" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="dt_retire" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="mb_16pid" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="mb_16ppid" exp=""/>
+        <constraint desc="" field="dt_create" exp=""/>
+        <constraint desc="" field="dt_retire" exp=""/>
+        <constraint desc="" field="mb_16pid" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="mb_16ppid" type="field" hidden="0"/>
+          <column width="-1" name="dt_create" type="field" hidden="0"/>
+          <column width="-1" name="dt_retire" type="field" hidden="0"/>
+          <column width="-1" name="mb_16pid" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="dt_create"/>
+        <field editable="1" name="dt_retire"/>
+        <field editable="1" name="mb_16pid"/>
+        <field editable="1" name="mb_16ppid"/>
+        <field editable="1" name="ogc_fid"/>
+      </editable>
+      <labelOnTop>
+        <field name="dt_create" labelOnTop="0"/>
+        <field name="dt_retire" labelOnTop="0"/>
+        <field name="mb_16pid" labelOnTop="0"/>
+        <field name="mb_16ppid" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Point" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="0" minScale="1e+8" type="vector">
+      <id>abs_meshblocks_points_6878cf07_0f99_4e5f_86d3_cd8eb1bb3dda</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="abs_meshblocks_points" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>abs_meshblocks_points</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs</proj4>
+          <srsid>3415</srsid>
+          <srid>4283</srid>
+          <authid>EPSG:4283</authid>
+          <description>GDA94</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>GRS80</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="marker">
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0">
+              <prop v="0" k="angle"/>
+              <prop v="152,125,183,255" k="color"/>
+              <prop v="1" k="horizontal_anchor_point"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="circle" k="name"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,35,35,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0" k="outline_width"/>
+              <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="diameter" k="scale_method"/>
+              <prop v="1" k="size"/>
+              <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+              <prop v="MM" k="size_unit"/>
+              <prop v="1" k="vertical_anchor_point"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property key="dualview/previewExpressions">
+          <value>ogc_fid</value>
+        </property>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="0" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="mb_16pid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="nearest_road_node">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="mb_16pid" index="1" name=""/>
+        <alias field="nearest_road_node" index="2" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="mb_16pid" applyOnUpdate="0" expression=""/>
+        <default field="nearest_road_node" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="mb_16pid" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="nearest_road_node" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="mb_16pid" exp=""/>
+        <constraint desc="" field="nearest_road_node" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="mb_16pid" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+          <column width="-1" name="nearest_road_node" type="field" hidden="0"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="mb_16pid"/>
+        <field editable="1" name="ogc_fid"/>
+      </editable>
+      <labelOnTop>
+        <field name="mb_16pid" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Point" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="0" minScale="1e+8" type="vector">
+      <extent>
+        <xmin>141.08248699999998621</xmin>
+        <ymin>-38.75352399999999875</ymin>
+        <xmax>149.75429600000001074</xmax>
+        <ymax>-34.16936533999999881</ymax>
+      </extent>
+      <id>det_schools_164c8312_aa87_4fb1_bde3_6aab81f20b77</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="det_schools" (geometry) sql="education_sector" = 'Government' and "school_type" IN ( 'Primary' , 'Pri/Sec' )</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>Government Primary Schools</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="marker">
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0">
+              <prop v="0" k="angle"/>
+              <prop v="255,255,255,255" k="color"/>
+              <prop v="1" k="horizontal_anchor_point"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="circle" k="name"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="255,255,255,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="1" k="outline_width"/>
+              <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="diameter" k="scale_method"/>
+              <prop v="3" k="size"/>
+              <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+              <prop v="MM" k="size_unit"/>
+              <prop v="1" k="vertical_anchor_point"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0">
+              <prop v="0" k="angle"/>
+              <prop v="225,89,137,255" k="color"/>
+              <prop v="1" k="horizontal_anchor_point"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="circle" k="name"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,35,35,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0" k="outline_width"/>
+              <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="diameter" k="scale_method"/>
+              <prop v="3" k="size"/>
+              <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+              <prop v="MM" k="size_unit"/>
+              <prop v="1" k="vertical_anchor_point"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="&quot;ogc_fid&quot;" key="dualview/previewExpressions"/>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="0" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="education_sector">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="entity_type">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="school_no">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="school_name">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="school_type">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="school_status">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="address_line_1">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="address_line_2">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="address_town">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="address_state">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="address_postcode">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="postal_address_line_1">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="postal_address_line_2">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="postal_town">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="postal_state">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="postal_postcode">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="full_phone_no">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lga_id">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lga_name">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="x">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="y">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="education_sector" index="1" name=""/>
+        <alias field="entity_type" index="2" name=""/>
+        <alias field="school_no" index="3" name=""/>
+        <alias field="school_name" index="4" name=""/>
+        <alias field="school_type" index="5" name=""/>
+        <alias field="school_status" index="6" name=""/>
+        <alias field="address_line_1" index="7" name=""/>
+        <alias field="address_line_2" index="8" name=""/>
+        <alias field="address_town" index="9" name=""/>
+        <alias field="address_state" index="10" name=""/>
+        <alias field="address_postcode" index="11" name=""/>
+        <alias field="postal_address_line_1" index="12" name=""/>
+        <alias field="postal_address_line_2" index="13" name=""/>
+        <alias field="postal_town" index="14" name=""/>
+        <alias field="postal_state" index="15" name=""/>
+        <alias field="postal_postcode" index="16" name=""/>
+        <alias field="full_phone_no" index="17" name=""/>
+        <alias field="lga_id" index="18" name=""/>
+        <alias field="lga_name" index="19" name=""/>
+        <alias field="x" index="20" name=""/>
+        <alias field="y" index="21" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="education_sector" applyOnUpdate="0" expression=""/>
+        <default field="entity_type" applyOnUpdate="0" expression=""/>
+        <default field="school_no" applyOnUpdate="0" expression=""/>
+        <default field="school_name" applyOnUpdate="0" expression=""/>
+        <default field="school_type" applyOnUpdate="0" expression=""/>
+        <default field="school_status" applyOnUpdate="0" expression=""/>
+        <default field="address_line_1" applyOnUpdate="0" expression=""/>
+        <default field="address_line_2" applyOnUpdate="0" expression=""/>
+        <default field="address_town" applyOnUpdate="0" expression=""/>
+        <default field="address_state" applyOnUpdate="0" expression=""/>
+        <default field="address_postcode" applyOnUpdate="0" expression=""/>
+        <default field="postal_address_line_1" applyOnUpdate="0" expression=""/>
+        <default field="postal_address_line_2" applyOnUpdate="0" expression=""/>
+        <default field="postal_town" applyOnUpdate="0" expression=""/>
+        <default field="postal_state" applyOnUpdate="0" expression=""/>
+        <default field="postal_postcode" applyOnUpdate="0" expression=""/>
+        <default field="full_phone_no" applyOnUpdate="0" expression=""/>
+        <default field="lga_id" applyOnUpdate="0" expression=""/>
+        <default field="lga_name" applyOnUpdate="0" expression=""/>
+        <default field="x" applyOnUpdate="0" expression=""/>
+        <default field="y" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="education_sector" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="entity_type" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="school_no" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="school_name" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="school_type" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="school_status" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="address_line_1" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="address_line_2" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="address_town" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="address_state" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="address_postcode" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="postal_address_line_1" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="postal_address_line_2" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="postal_town" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="postal_state" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="postal_postcode" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="full_phone_no" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="lga_id" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="lga_name" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="x" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="y" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="education_sector" exp=""/>
+        <constraint desc="" field="entity_type" exp=""/>
+        <constraint desc="" field="school_no" exp=""/>
+        <constraint desc="" field="school_name" exp=""/>
+        <constraint desc="" field="school_type" exp=""/>
+        <constraint desc="" field="school_status" exp=""/>
+        <constraint desc="" field="address_line_1" exp=""/>
+        <constraint desc="" field="address_line_2" exp=""/>
+        <constraint desc="" field="address_town" exp=""/>
+        <constraint desc="" field="address_state" exp=""/>
+        <constraint desc="" field="address_postcode" exp=""/>
+        <constraint desc="" field="postal_address_line_1" exp=""/>
+        <constraint desc="" field="postal_address_line_2" exp=""/>
+        <constraint desc="" field="postal_town" exp=""/>
+        <constraint desc="" field="postal_state" exp=""/>
+        <constraint desc="" field="postal_postcode" exp=""/>
+        <constraint desc="" field="full_phone_no" exp=""/>
+        <constraint desc="" field="lga_id" exp=""/>
+        <constraint desc="" field="lga_name" exp=""/>
+        <constraint desc="" field="x" exp=""/>
+        <constraint desc="" field="y" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="education_sector" type="field" hidden="0"/>
+          <column width="-1" name="entity_type" type="field" hidden="0"/>
+          <column width="-1" name="school_no" type="field" hidden="0"/>
+          <column width="-1" name="school_name" type="field" hidden="0"/>
+          <column width="-1" name="school_type" type="field" hidden="0"/>
+          <column width="-1" name="school_status" type="field" hidden="0"/>
+          <column width="-1" name="address_line_1" type="field" hidden="0"/>
+          <column width="-1" name="address_line_2" type="field" hidden="0"/>
+          <column width="-1" name="address_town" type="field" hidden="0"/>
+          <column width="-1" name="address_state" type="field" hidden="0"/>
+          <column width="-1" name="address_postcode" type="field" hidden="0"/>
+          <column width="-1" name="postal_address_line_1" type="field" hidden="0"/>
+          <column width="-1" name="postal_address_line_2" type="field" hidden="0"/>
+          <column width="-1" name="postal_town" type="field" hidden="0"/>
+          <column width="-1" name="postal_state" type="field" hidden="0"/>
+          <column width="-1" name="postal_postcode" type="field" hidden="0"/>
+          <column width="-1" name="full_phone_no" type="field" hidden="0"/>
+          <column width="-1" name="lga_id" type="field" hidden="0"/>
+          <column width="-1" name="lga_name" type="field" hidden="0"/>
+          <column width="-1" name="x" type="field" hidden="0"/>
+          <column width="-1" name="y" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="address_line_1"/>
+        <field editable="1" name="address_line_2"/>
+        <field editable="1" name="address_postcode"/>
+        <field editable="1" name="address_state"/>
+        <field editable="1" name="address_town"/>
+        <field editable="1" name="education_sector"/>
+        <field editable="1" name="entity_type"/>
+        <field editable="1" name="full_phone_no"/>
+        <field editable="1" name="lga_id"/>
+        <field editable="1" name="lga_name"/>
+        <field editable="1" name="ogc_fid"/>
+        <field editable="1" name="postal_address_line_1"/>
+        <field editable="1" name="postal_address_line_2"/>
+        <field editable="1" name="postal_postcode"/>
+        <field editable="1" name="postal_state"/>
+        <field editable="1" name="postal_town"/>
+        <field editable="1" name="school_name"/>
+        <field editable="1" name="school_no"/>
+        <field editable="1" name="school_status"/>
+        <field editable="1" name="school_type"/>
+        <field editable="1" name="x"/>
+        <field editable="1" name="y"/>
+      </editable>
+      <labelOnTop>
+        <field name="address_line_1" labelOnTop="0"/>
+        <field name="address_line_2" labelOnTop="0"/>
+        <field name="address_postcode" labelOnTop="0"/>
+        <field name="address_state" labelOnTop="0"/>
+        <field name="address_town" labelOnTop="0"/>
+        <field name="education_sector" labelOnTop="0"/>
+        <field name="entity_type" labelOnTop="0"/>
+        <field name="full_phone_no" labelOnTop="0"/>
+        <field name="lga_id" labelOnTop="0"/>
+        <field name="lga_name" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+        <field name="postal_address_line_1" labelOnTop="0"/>
+        <field name="postal_address_line_2" labelOnTop="0"/>
+        <field name="postal_postcode" labelOnTop="0"/>
+        <field name="postal_state" labelOnTop="0"/>
+        <field name="postal_town" labelOnTop="0"/>
+        <field name="school_name" labelOnTop="0"/>
+        <field name="school_no" labelOnTop="0"/>
+        <field name="school_status" labelOnTop="0"/>
+        <field name="school_type" labelOnTop="0"/>
+        <field name="x" labelOnTop="0"/>
+        <field name="y" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Point" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="0" minScale="1e+8" type="vector">
+      <extent>
+        <xmin>144.55425999999999931</xmin>
+        <ymin>-38.37356690000000015</ymin>
+        <xmax>145.49307300000000964</xmax>
+        <ymax>-37.56437700000000035</ymax>
+      </extent>
+      <id>msz_schools_3ef818bc_68c1_40d1_8cb6_547bc36ea41c</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="msz_schools" (geometry) sql="type" IN ( 'Primary' , 'Combined' )</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>msz_schools</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="marker">
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0">
+              <prop v="0" k="angle"/>
+              <prop v="190,207,80,255" k="color"/>
+              <prop v="1" k="horizontal_anchor_point"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="circle" k="name"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,35,35,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0" k="outline_width"/>
+              <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="diameter" k="scale_method"/>
+              <prop v="2" k="size"/>
+              <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+              <prop v="MM" k="size_unit"/>
+              <prop v="1" k="vertical_anchor_point"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="0" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="id">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="name">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="gender">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="restrictedzone">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="type">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lng">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lat">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="id" index="1" name=""/>
+        <alias field="name" index="2" name=""/>
+        <alias field="gender" index="3" name=""/>
+        <alias field="restrictedzone" index="4" name=""/>
+        <alias field="type" index="5" name=""/>
+        <alias field="lng" index="6" name=""/>
+        <alias field="lat" index="7" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="id" applyOnUpdate="0" expression=""/>
+        <default field="name" applyOnUpdate="0" expression=""/>
+        <default field="gender" applyOnUpdate="0" expression=""/>
+        <default field="restrictedzone" applyOnUpdate="0" expression=""/>
+        <default field="type" applyOnUpdate="0" expression=""/>
+        <default field="lng" applyOnUpdate="0" expression=""/>
+        <default field="lat" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="id" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="name" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="gender" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="restrictedzone" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="type" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="lng" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="lat" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="id" exp=""/>
+        <constraint desc="" field="name" exp=""/>
+        <constraint desc="" field="gender" exp=""/>
+        <constraint desc="" field="restrictedzone" exp=""/>
+        <constraint desc="" field="type" exp=""/>
+        <constraint desc="" field="lng" exp=""/>
+        <constraint desc="" field="lat" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="id" type="field" hidden="0"/>
+          <column width="-1" name="name" type="field" hidden="0"/>
+          <column width="-1" name="gender" type="field" hidden="0"/>
+          <column width="-1" name="restrictedzone" type="field" hidden="0"/>
+          <column width="-1" name="type" type="field" hidden="0"/>
+          <column width="-1" name="lng" type="field" hidden="0"/>
+          <column width="-1" name="lat" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="gender"/>
+        <field editable="1" name="id"/>
+        <field editable="1" name="lat"/>
+        <field editable="1" name="lng"/>
+        <field editable="1" name="name"/>
+        <field editable="1" name="ogc_fid"/>
+        <field editable="1" name="restrictedzone"/>
+        <field editable="1" name="type"/>
+      </editable>
+      <labelOnTop>
+        <field name="gender" labelOnTop="0"/>
+        <field name="id" labelOnTop="0"/>
+        <field name="lat" labelOnTop="0"/>
+        <field name="lng" labelOnTop="0"/>
+        <field name="name" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+        <field name="restrictedzone" labelOnTop="0"/>
+        <field name="type" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Polygon" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="1" minScale="1e+8" type="vector">
+      <id>psma_lga_91d1ff93_d668_40cc_b1d8_8f6fbafc5385</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="psma_lga" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>LGA</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs</proj4>
+          <srsid>3415</srsid>
+          <srid>4283</srid>
+          <authid>EPSG:4283</authid>
+          <description>GDA94</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>GRS80</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="0.201" type="fill">
+            <layer pass="0" class="SimpleFill" enabled="1" locked="0">
+              <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+              <prop v="255,255,0,255" k="color"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="255,251,0,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="3.26" k="outline_width"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="no" k="style"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="1" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lg_ply_pid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="dt_create">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="dt_retire">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lga_pid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="lg_ply_pid" index="1" name=""/>
+        <alias field="dt_create" index="2" name=""/>
+        <alias field="dt_retire" index="3" name=""/>
+        <alias field="lga_pid" index="4" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="lg_ply_pid" applyOnUpdate="0" expression=""/>
+        <default field="dt_create" applyOnUpdate="0" expression=""/>
+        <default field="dt_retire" applyOnUpdate="0" expression=""/>
+        <default field="lga_pid" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="lg_ply_pid" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="dt_create" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="dt_retire" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="lga_pid" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="lg_ply_pid" exp=""/>
+        <constraint desc="" field="dt_create" exp=""/>
+        <constraint desc="" field="dt_retire" exp=""/>
+        <constraint desc="" field="lga_pid" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="lg_ply_pid" type="field" hidden="0"/>
+          <column width="-1" name="dt_create" type="field" hidden="0"/>
+          <column width="-1" name="dt_retire" type="field" hidden="0"/>
+          <column width="-1" name="lga_pid" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="dt_create"/>
+        <field editable="1" name="dt_retire"/>
+        <field editable="1" name="lg_ply_pid"/>
+        <field editable="1" name="lga_pid"/>
+        <field editable="1" name="ogc_fid"/>
+      </editable>
+      <labelOnTop>
+        <field name="dt_create" labelOnTop="0"/>
+        <field name="dt_retire" labelOnTop="0"/>
+        <field name="lg_ply_pid" labelOnTop="0"/>
+        <field name="lga_pid" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Line" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="1" minScale="1e+8" type="vector">
+      <id>road_arcs_56673e37_890c_4fba_a1b2_5bb21f237e31</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="road_arcs" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>OSM Roads</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="line">
+            <layer pass="0" class="SimpleLine" enabled="1" locked="0">
+              <prop v="square" k="capstyle"/>
+              <prop v="5;2" k="customdash"/>
+              <prop v="3x:0,0,0,0,0,0" k="customdash_map_unit_scale"/>
+              <prop v="MM" k="customdash_unit"/>
+              <prop v="0" k="draw_inside_polygon"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="229,182,54,255" k="line_color"/>
+              <prop v="solid" k="line_style"/>
+              <prop v="0.26" k="line_width"/>
+              <prop v="MM" k="line_width_unit"/>
+              <prop v="0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="0" k="use_custom_dash"/>
+              <prop v="3x:0,0,0,0,0,0" k="width_map_unit_scale"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties/>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <fieldConfiguration>
+        <field name="arc_id">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="osm_id">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="node_from">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="node_to">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="type">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="name">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="lanes">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="maxspeed">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="oneway_ft">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="oneway_tf">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="arc_id" index="0" name=""/>
+        <alias field="osm_id" index="1" name=""/>
+        <alias field="node_from" index="2" name=""/>
+        <alias field="node_to" index="3" name=""/>
+        <alias field="type" index="4" name=""/>
+        <alias field="name" index="5" name=""/>
+        <alias field="lanes" index="6" name=""/>
+        <alias field="maxspeed" index="7" name=""/>
+        <alias field="oneway_ft" index="8" name=""/>
+        <alias field="oneway_tf" index="9" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="arc_id" applyOnUpdate="0" expression=""/>
+        <default field="osm_id" applyOnUpdate="0" expression=""/>
+        <default field="node_from" applyOnUpdate="0" expression=""/>
+        <default field="node_to" applyOnUpdate="0" expression=""/>
+        <default field="type" applyOnUpdate="0" expression=""/>
+        <default field="name" applyOnUpdate="0" expression=""/>
+        <default field="lanes" applyOnUpdate="0" expression=""/>
+        <default field="maxspeed" applyOnUpdate="0" expression=""/>
+        <default field="oneway_ft" applyOnUpdate="0" expression=""/>
+        <default field="oneway_tf" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="arc_id" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="osm_id" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="node_from" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="node_to" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="type" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="name" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="lanes" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="maxspeed" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="oneway_ft" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="oneway_tf" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="arc_id" exp=""/>
+        <constraint desc="" field="osm_id" exp=""/>
+        <constraint desc="" field="node_from" exp=""/>
+        <constraint desc="" field="node_to" exp=""/>
+        <constraint desc="" field="type" exp=""/>
+        <constraint desc="" field="name" exp=""/>
+        <constraint desc="" field="lanes" exp=""/>
+        <constraint desc="" field="maxspeed" exp=""/>
+        <constraint desc="" field="oneway_ft" exp=""/>
+        <constraint desc="" field="oneway_tf" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns/>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable/>
+      <labelOnTop/>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression></previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Point" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="0" minScale="1e+8" type="vector">
+      <id>road_nodes_5cac4f4a_e376_403c_84a3_70712a18ff75</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="road_nodes" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>road_nodes</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="marker">
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0">
+              <prop v="0" k="angle"/>
+              <prop v="125,139,143,255" k="color"/>
+              <prop v="1" k="horizontal_anchor_point"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="circle" k="name"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,35,35,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0" k="outline_width"/>
+              <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="diameter" k="scale_method"/>
+              <prop v="0.6" k="size"/>
+              <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+              <prop v="MM" k="size_unit"/>
+              <prop v="1" k="vertical_anchor_point"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="0" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="node_id">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="node_id" index="0" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="node_id" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="node_id" notnull_strength="1" unique_strength="1" constraints="3"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="node_id" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="node_id" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="node_id"/>
+      </editable>
+      <labelOnTop>
+        <field name="node_id" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>node_id</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Polygon" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="1" minScale="1e+8" type="vector">
+      <id>wcc_subdivision_stages_d7227ce9_38d1_4485_b80f_1e2d84783705</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="wcc_subdivision_stages" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>wcc_subdivision_stages</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="fill">
+            <layer pass="0" class="SimpleFill" enabled="1" locked="0">
+              <prop v="3x:0,0,0,0,0,0" k="border_width_map_unit_scale"/>
+              <prop v="231,113,72,255" k="color"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,64,255,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0.46" k="outline_width"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="no" k="style"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property value="ogc_fid" key="dualview/previewExpressions"/>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="1" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="stage_name">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="id1">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="estatenameandstagenumber">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="estate_name_only">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="stage_no_only">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="stage_name" index="1" name=""/>
+        <alias field="id1" index="2" name=""/>
+        <alias field="estatenameandstagenumber" index="3" name=""/>
+        <alias field="estate_name_only" index="4" name=""/>
+        <alias field="stage_no_only" index="5" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="stage_name" applyOnUpdate="0" expression=""/>
+        <default field="id1" applyOnUpdate="0" expression=""/>
+        <default field="estatenameandstagenumber" applyOnUpdate="0" expression=""/>
+        <default field="estate_name_only" applyOnUpdate="0" expression=""/>
+        <default field="stage_no_only" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="stage_name" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="id1" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="estatenameandstagenumber" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="estate_name_only" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="stage_no_only" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="stage_name" exp=""/>
+        <constraint desc="" field="id1" exp=""/>
+        <constraint desc="" field="estatenameandstagenumber" exp=""/>
+        <constraint desc="" field="estate_name_only" exp=""/>
+        <constraint desc="" field="stage_no_only" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="stage_name" type="field" hidden="0"/>
+          <column width="-1" name="id1" type="field" hidden="0"/>
+          <column width="-1" name="estatenameandstagenumber" type="field" hidden="0"/>
+          <column width="-1" name="estate_name_only" type="field" hidden="0"/>
+          <column width="-1" name="stage_no_only" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="estate_name_only"/>
+        <field editable="1" name="estatenameandstagenumber"/>
+        <field editable="1" name="id1"/>
+        <field editable="1" name="ogc_fid"/>
+        <field editable="1" name="stage_name"/>
+        <field editable="1" name="stage_no_only"/>
+      </editable>
+      <labelOnTop>
+        <field name="estate_name_only" labelOnTop="0"/>
+        <field name="estatenameandstagenumber" labelOnTop="0"/>
+        <field name="id1" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+        <field name="stage_name" labelOnTop="0"/>
+        <field name="stage_no_only" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" hasScaleBasedVisibilityFlag="0" maxScale="0" geometry="Point" readOnly="0" refreshOnNotifyMessage="" labelsEnabled="0" refreshOnNotifyEnabled="0" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyLocal="1" autoRefreshTime="0" simplifyMaxScale="1" simplifyDrawingHints="0" minScale="1e+8" type="vector">
+      <extent>
+        <xmin>144.49719260742284632</xmin>
+        <ymin>-37.97077131190000188</ymin>
+        <xmax>144.82479050503468443</xmax>
+        <ymax>-37.81010856679999677</ymax>
+      </extent>
+      <id>wcc_subdivision_stages_points_37f7e01b_56e4_45cd_a9ef_52bc5893f528</id>
+      <datasource>dbname='../../../../GovHack2018/MyLocalSchool.sqlite' table="wcc_subdivision_stages_points" (geometry) sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>wcc_subdivision_stages_points</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="" dimensions="2" maxy="0" maxx="0" minz="0" maxz="0" miny="0" minx="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="System">spatialite</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <legend type="default-vector"/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <renderer-v2 forceraster="0" enableorderby="0" symbollevels="0" type="singleSymbol">
+        <symbols>
+          <symbol name="0" clip_to_extent="1" alpha="1" type="marker">
+            <layer pass="0" class="SimpleMarker" enabled="1" locked="0">
+              <prop v="0" k="angle"/>
+              <prop v="79,102,255,255" k="color"/>
+              <prop v="1" k="horizontal_anchor_point"/>
+              <prop v="bevel" k="joinstyle"/>
+              <prop v="circle" k="name"/>
+              <prop v="0,0" k="offset"/>
+              <prop v="3x:0,0,0,0,0,0" k="offset_map_unit_scale"/>
+              <prop v="MM" k="offset_unit"/>
+              <prop v="35,35,35,255" k="outline_color"/>
+              <prop v="solid" k="outline_style"/>
+              <prop v="0" k="outline_width"/>
+              <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
+              <prop v="MM" k="outline_width_unit"/>
+              <prop v="diameter" k="scale_method"/>
+              <prop v="1" k="size"/>
+              <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
+              <prop v="MM" k="size_unit"/>
+              <prop v="1" k="vertical_anchor_point"/>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+      </renderer-v2>
+      <customproperties>
+        <property key="dualview/previewExpressions">
+          <value>ogc_fid</value>
+        </property>
+        <property value="0" key="embeddedWidgets/count"/>
+        <property key="variableNames"/>
+        <property key="variableValues"/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
+        <DiagramCategory sizeScale="3x:0,0,0,0,0,0" width="15" diagramOrientation="Up" backgroundColor="#ffffff" minScaleDenominator="0" penColor="#000000" scaleBasedVisibility="0" scaleDependency="Area" maxScaleDenominator="1e+8" height="15" barWidth="5" sizeType="MM" penAlpha="255" rotationOffset="270" minimumSize="0" enabled="0" lineSizeType="MM" opacity="1" penWidth="0" labelPlacementMethod="XHeight" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0">
+          <fontProperties style="" description="MS Shell Dlg 2,8,-1,5,50,0,0,0,0,0"/>
+          <attribute field="" label="" color="#000000"/>
+        </DiagramCategory>
+      </SingleCategoryDiagramRenderer>
+      <DiagramLayerSettings showAll="1" linePlacementFlags="18" obstacle="0" dist="0" placement="0" zIndex="0" priority="0">
+        <properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </properties>
+      </DiagramLayerSettings>
+      <fieldConfiguration>
+        <field name="ogc_fid">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="id1">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="nearest_road_node">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="ogc_fid" index="0" name=""/>
+        <alias field="id1" index="1" name=""/>
+        <alias field="nearest_road_node" index="2" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <defaults>
+        <default field="ogc_fid" applyOnUpdate="0" expression=""/>
+        <default field="id1" applyOnUpdate="0" expression=""/>
+        <default field="nearest_road_node" applyOnUpdate="0" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" field="ogc_fid" notnull_strength="1" unique_strength="1" constraints="3"/>
+        <constraint exp_strength="0" field="id1" notnull_strength="0" unique_strength="0" constraints="0"/>
+        <constraint exp_strength="0" field="nearest_road_node" notnull_strength="0" unique_strength="0" constraints="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint desc="" field="ogc_fid" exp=""/>
+        <constraint desc="" field="id1" exp=""/>
+        <constraint desc="" field="nearest_road_node" exp=""/>
+      </constraintExpressions>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="1" actionWidgetStyle="dropDown" sortExpression="&quot;nearest_road_node&quot;">
+        <columns>
+          <column width="-1" name="ogc_fid" type="field" hidden="0"/>
+          <column width="-1" name="id1" type="field" hidden="0"/>
+          <column width="-1" type="actions" hidden="1"/>
+          <column width="-1" name="nearest_road_node" type="field" hidden="0"/>
+        </columns>
+      </attributetableconfig>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+	geom = feature.geometry()
+	control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable>
+        <field editable="1" name="id1"/>
+        <field editable="1" name="ogc_fid"/>
+      </editable>
+      <labelOnTop>
+        <field name="id1" labelOnTop="0"/>
+        <field name="ogc_fid" labelOnTop="0"/>
+      </labelOnTop>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <expressionfields/>
+      <previewExpression>ogc_fid</previewExpression>
+      <mapTip></mapTip>
+    </maplayer>
+  </projectlayers>
+  <layerorder>
+    <layer id="psma_lga_91d1ff93_d668_40cc_b1d8_8f6fbafc5385"/>
+    <layer id="road_arcs_56673e37_890c_4fba_a1b2_5bb21f237e31"/>
+    <layer id="OpenStreetMap_49d9d3cf_f44e_4bed_aa95_393a8f3d19e1"/>
+    <layer id="det_schools_164c8312_aa87_4fb1_bde3_6aab81f20b77"/>
+    <layer id="abs_meshblocks_500c5b10_1585_4739_b9e2_edefc26a0120"/>
+    <layer id="wcc_subdivision_stages_d7227ce9_38d1_4485_b80f_1e2d84783705"/>
+    <layer id="wcc_subdivision_stages_points_37f7e01b_56e4_45cd_a9ef_52bc5893f528"/>
+    <layer id="msz_schools_3ef818bc_68c1_40d1_8cb6_547bc36ea41c"/>
+    <layer id="abs_meshblocks_points_6878cf07_0f99_4e5f_86d3_cd8eb1bb3dda"/>
+    <layer id="road_nodes_5cac4f4a_e376_403c_84a3_70712a18ff75"/>
+  </layerorder>
+  <properties>
+    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
+    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
+    <DefaultStyles>
+      <ColorRamp type="QString"></ColorRamp>
+      <Marker type="QString"></Marker>
+      <Opacity type="double">1</Opacity>
+      <Fill type="QString"></Fill>
+      <Line type="QString"></Line>
+      <RandomColors type="bool">true</RandomColors>
+    </DefaultStyles>
+    <WMSContactOrganization type="QString"></WMSContactOrganization>
+    <Measurement>
+      <AreaUnits type="QString">m2</AreaUnits>
+      <DistanceUnits type="QString">meters</DistanceUnits>
+    </Measurement>
+    <WMSContactMail type="QString"></WMSContactMail>
+    <PAL>
+      <CandidatesLine type="int">50</CandidatesLine>
+      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+      <CandidatesPolygon type="int">30</CandidatesPolygon>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <CandidatesPoint type="int">16</CandidatesPoint>
+      <SearchMethod type="int">0</SearchMethod>
+    </PAL>
+    <WFSLayers type="QStringList"/>
+    <Measure>
+      <Ellipsoid type="QString">WGS84</Ellipsoid>
+    </Measure>
+    <WFSTLayers>
+      <Delete type="QStringList"/>
+      <Insert type="QStringList"/>
+      <Update type="QStringList"/>
+    </WFSTLayers>
+    <WMSFees type="QString">conditions unknown</WMSFees>
+    <WMSImageQuality type="int">90</WMSImageQuality>
+    <WMSContactPerson type="QString"></WMSContactPerson>
+    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
+    <WMSPrecision type="QString">8</WMSPrecision>
+    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+    <Legend>
+      <filterByMap type="bool">false</filterByMap>
+    </Legend>
+    <WFSUrl type="QString"></WFSUrl>
+    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+    <WCSLayers type="QStringList"/>
+    <Gui>
+      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+      <CanvasColorBluePart type="int">255</CanvasColorBluePart>
+      <CanvasColorRedPart type="int">255</CanvasColorRedPart>
+      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+      <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
+      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+    </Gui>
+    <WMSContactPhone type="QString"></WMSContactPhone>
+    <WMSServiceTitle type="QString"></WMSServiceTitle>
+    <WMSKeywordList type="QStringList">
+      <value></value>
+    </WMSKeywordList>
+    <WMSUrl type="QString"></WMSUrl>
+    <SpatialRefSys>
+      <ProjectionsEnabled type="int">1</ProjectionsEnabled>
+    </SpatialRefSys>
+    <PositionPrecision>
+      <Automatic type="bool">true</Automatic>
+      <DegreeFormat type="QString">MU</DegreeFormat>
+      <DecimalPlaces type="int">2</DecimalPlaces>
+    </PositionPrecision>
+    <WMSRequestDefinedDataSources type="bool">false</WMSRequestDefinedDataSources>
+    <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
+    <WCSUrl type="QString"></WCSUrl>
+    <RequiredLayers>
+      <Layers type="QStringList"/>
+    </RequiredLayers>
+    <WMSContactPosition type="QString"></WMSContactPosition>
+    <Paths>
+      <Absolute type="bool">false</Absolute>
+    </Paths>
+    <Identify>
+      <disabledLayers type="QStringList"/>
+    </Identify>
+    <WMSOnlineResource type="QString"></WMSOnlineResource>
+    <Macros>
+      <pythonCode type="QString"></pythonCode>
+    </Macros>
+  </properties>
+  <visibility-presets/>
+  <transformContext/>
+  <projectMetadata>
+    <identifier></identifier>
+    <parentidentifier></parentidentifier>
+    <language></language>
+    <type></type>
+    <title></title>
+    <abstract></abstract>
+    <contact>
+      <name></name>
+      <organization></organization>
+      <position></position>
+      <voice></voice>
+      <fax></fax>
+      <email></email>
+      <role></role>
+    </contact>
+    <links/>
+    <author>Simon</author>
+    <creation>2018-09-08T12:32:34</creation>
+  </projectMetadata>
+  <Annotations/>
+  <Layouts/>
+</qgis>
