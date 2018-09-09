@@ -4,15 +4,14 @@
 
 ## Story
 
+*'If I could fly it'd be perfect': The glitch with Melbourne's school zones*, [The Age, 18 Apr 2018](https://www.theage.com.au/national/victoria/if-i-could-fly-it-d-be-perfect-the-glitch-with-melbourne-s-school-zones-20180416-p4z9uw.html)
+
+**My Local School** uses open data from the Australian Bureau of Statistics, PSMA and Wyndham City Council to generate alternative school intake zones. These geographic datasets represent neighbourhood units that, combined with routing analysis, form cohesive community regions for fairer school intake zones. Households within these zones have the certainty that their assigned school is the shortest travel distance for their neighbourhood.
 #### [Video](https://spark.adobe.com/video/8AmtcfeB6Lygw)
 
 <a href="https://spark.adobe.com/video/8AmtcfeB6Lygw" target="_blank"><img src="https://content.screencast.com/users/groundtruth/folders/Snagit/media/784db926-9fd8-4805-9cb9-cf188e8a8c8d/09.09.2018-10.07.png" width="600" border="0"></a>
 
 #### [Interactive Map](https://mylocalschool.pozi.com/#/layers[existingprimaryschoolzones]/layers[primaryschools]/)
-
-#### Problem
-
-#### Solution
 
 ## Resources
 
