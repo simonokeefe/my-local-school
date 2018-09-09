@@ -2,7 +2,15 @@
 
 ### *Smart school zones for connected communities*
 
-<iframe src="https://spark.adobe.com/video/8AmtcfeB6Lygw/embed" width="600" height="338" frameborder="0" allowfullscreen></iframe>
+## Story
+
+#### [Video](https://spark.adobe.com/video/8AmtcfeB6Lygw)
+
+<a href="https://spark.adobe.com/video/8AmtcfeB6Lygw" target="_blank"><img src="https://content.screencast.com/users/groundtruth/folders/Snagit/media/784db926-9fd8-4805-9cb9-cf188e8a8c8d/09.09.2018-10.07.png"></a>
+
+#### Problem
+
+#### Solution
 
 ## Resources
 
