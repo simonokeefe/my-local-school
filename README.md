@@ -157,14 +157,6 @@ UPDATE abs_meshblocks_points SET
   WHERE ST_Within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) );
 CREATE INDEX abs_meshblocks_points_mb_16pid ON abs_meshblocks_points ( mb_16pid );
 CREATE INDEX abs_meshblocks_points_nearest_road_node ON abs_meshblocks_points ( nearest_road_node );
-
--- Update DET Schools with nearest road nodes (2 minutes for schools in Wyndham and surrounding LGAs only) --
-ALTER TABLE det_schools ADD COLUMN nearest_road_node INTEGER;
-UPDATE det_schools SET
-  nearest_road_node = ( select fid from knn where f_table_name = 'road_nodes' and ref_geometry = geometry and max_items = 1 )
-  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
-CREATE INDEX det_schools_school_no ON det_schools ( school_no );
-CREATE INDEX det_schools_nearest_road_node ON det_schools ( nearest_road_node );
 ```
 
 Press Ctrl-C to return to standard command prompt.
@@ -177,6 +169,26 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 
 ### Create Government Secondary Schools Layer
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where education_sector = 'Government' and school_type in ( 'Secondary' , 'Pri/Sec' ) and school_name != 'Suzanne Cory High School'" -nln det_gov_secondary_schools -nlt POINT -t_srs EPSG:4326 -update
+```
+
+### Update schools layers with nearest road nodes (2 minutes for schools in Wyndham and surrounding LGAs only)
+
+*Note: the schools must be processed separately for the knn process to associate the fid with the features in the corresponding table.*
+
+```
+.\spatialite MyLocalSchool.sqlite
+
+-- Update Primary Schools
+ALTER TABLE det_gov_primary_schools ADD COLUMN nearest_road_node INTEGER;
+UPDATE det_schools SET
+  nearest_road_node = ( select fid from knn where f_table_name = 'road_nodes' and ref_geometry = geometry and max_items = 1 )
+  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
+
+-- Update Secondary Schools
+ALTER TABLE det_gov_secondary_schools ADD COLUMN nearest_road_node INTEGER;
+UPDATE det_schools SET
+  nearest_road_node = ( select fid from knn where f_table_name = 'road_nodes' and ref_geometry = geometry and max_items = 1 )
+  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
 ```
 
 ### Create and populate master look-up table
@@ -222,7 +234,7 @@ select mls_lut.*
 from mls_lut
 where mb_16pid = 'MB1620633179000';
 
---- Test navigating from Sassafras Close to Point Cook P-9; returns null for some reason --;
+--- Test navigating from Sassafras Close to Point Cook P-9; returns null because school's nearest road node is on disconnected path --;
 SELECT * FROM roads_net WHERE NodeFrom = 2120747207 AND NodeTo = 2147483647;
 ```
 
