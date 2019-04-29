@@ -79,10 +79,10 @@ Open command line at `C:\MyLocalSchool`
 .\spatialite .\MyLocalSchool.sqlite
 
 -- Clean Roads Data --;
-DELETE FROM road_arcs WHERE node_from = node_to;
-DELETE FROM road_arcs WHERE ST_Length(geometry) = 0;
-DELETE FROM road_arcs WHERE type IN ('Proposed');
-UPDATE road_arcs SET name = '' WHERE name IS NULL;
+delete from road_arcs where node_from = node_to;
+delete from road_arcs where st_length(geometry) = 0;
+delete from road_arcs where type in ('proposed');
+update road_arcs set name = '' where name is null;
 ```
 
 Press Ctrl-C to return to standard command prompt.
@@ -123,7 +123,7 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 
 ```sql
 .\spatialite MyLocalSchool.sqlite
-SELECT * FROM roads_net WHERE NodeFrom = 347257370 AND NodeTo = 347748405;
+select * from roads_net where nodefrom = 347257370 and nodeto = 347748405;
 ```
 
 Press Ctrl-C to return to standard command prompt.
@@ -152,15 +152,15 @@ ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\Local Government Areas AUGUST 2018\Sta
 .\spatialite MyLocalSchool.sqlite
 
 -- Edit DET Schools table with updated information --
-INSERT INTO det_schools
+insert into det_schools
     (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  VALUES (100001, 'Government', 'Carranballac P-9 College Jamieson Way Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.745775,-37.8951,4326));
-INSERT INTO det_schools
+  values (100001, 'Government', 'Carranballac P-9 College Jamieson Way Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.745775,-37.8951,4326));
+insert into det_schools
     (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  VALUES (100002, 'Government', 'Laverton P-12 College Laverton Primary School', 'Pri/Sec', 311, 'Hobsons Bay (C)', MakePoint(144.7704261,-37.8653317,4326));
-INSERT INTO det_schools
+  values (100002, 'Government', 'Laverton P-12 College Laverton Primary School', 'Pri/Sec', 311, 'Hobsons Bay (C)', MakePoint(144.7704261,-37.8653317,4326));
+insert into det_schools
     (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  VALUES (100003, 'Government', 'Baden Powell P-9 College Tarneit Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.69418,-37.84238,4326));
+  values (100003, 'Government', 'Baden Powell P-9 College Tarneit Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.69418,-37.84238,4326));
 ```
 
 ### Optimise tables for processing single LGA
@@ -173,29 +173,29 @@ delete from det_schools where not lga_id in ( '726' , '275' , '515' , '465' , '1
 ### Update and populate tables with nearest road arcs
 
 ```sql
-CREATE VIRTUAL TABLE knn USING VirtualKNN();
+create virtual table knn using VirtualKNN();
 
 -- Update Meshblocks Points with nearest road nodes (12 minutes for Wyndham LGA alone) --
-ALTER TABLE abs_meshblocks_points ADD COLUMN nearest_road_node_fid INTEGER;
-ALTER TABLE abs_meshblocks_points ADD COLUMN nearest_road_node_id INTEGER;
-UPDATE abs_meshblocks_points SET
+alter table abs_meshblocks_points add column nearest_road_node_fid integer;
+alter table abs_meshblocks_points add column nearest_road_node_id integer;
+update abs_meshblocks_points set
   nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 )
-  WHERE ST_Within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) );
-UPDATE abs_meshblocks_points SET
+  where st_within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) );
+update abs_meshblocks_points set
   nearest_road_node_id = ( select node_id from road_nodes_connected where ogc_fid = nearest_road_node_fid )
-  WHERE nearest_road_node_fid is not null;
-CREATE INDEX abs_meshblocks_points_mb_16pid ON abs_meshblocks_points ( mb_16pid );
-CREATE INDEX abs_meshblocks_points_nearest_road_node_id ON abs_meshblocks_points ( nearest_road_node_id );
+  where nearest_road_node_fid is not null;
+create index abs_meshblocks_points_mb_16pid on abs_meshblocks_points ( mb_16pid );
+create index abs_meshblocks_points_nearest_road_node_id on abs_meshblocks_points ( nearest_road_node_id );
 
-ALTER TABLE det_schools ADD COLUMN nearest_road_node_fid INTEGER;
-ALTER TABLE det_schools ADD COLUMN nearest_road_node_id INTEGER;
+alter table det_schools add column nearest_road_node_fid integer;
+alter table det_schools add column nearest_road_node_id integer;
 
-UPDATE det_schools SET
+update det_schools set
   nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 )
-  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
-UPDATE det_schools SET
+  where lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
+update det_schools set
   nearest_road_node_id = ( select node_id from road_nodes_connected where ogc_fid = nearest_road_node_fid )
-  WHERE nearest_road_node_fid is not null;
+  where nearest_road_node_fid is not null;
 ```
 
 Press Ctrl-C to return to standard command prompt.
@@ -216,37 +216,37 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 .\spatialite MyLocalSchool.sqlite
 
 -- Create look-up-table of meshblock points and their nearest schools (up to 28 minutes for whole of Victoria, 1-2 minutes for Wyndham) --
-CREATE TABLE mls_lut AS
-SELECT p.mb_16pid, p.nearest_road_node_id as start_node, k.*
-FROM knn k, abs_meshblocks_points p
-WHERE f_table_name in ( 'det_gov_primary_schools' , 'det_gov_secondary_schools' )
-AND k.ref_geometry = p.geometry
-AND k.max_items = 5;
+create table mls_lut as
+select p.mb_16pid, p.nearest_road_node_id as start_node, k.*
+from knn k, abs_meshblocks_points p
+where f_table_name in ( 'det_gov_primary_schools' , 'det_gov_secondary_schools' )
+and k.ref_geometry = p.geometry
+and k.max_items = 5;
 
 -- Add school name to the LUT. May not be necessary for final output, but useful for debugging --;
-ALTER TABLE mls_lut ADD COLUMN school_name TEXT;
-UPDATE mls_lut SET
-  school_name = ( SELECT school_name FROM det_gov_primary_schools d WHERE d.ogc_fid = fid)
-  WHERE f_table_name = 'det_gov_primary_schools';
-UPDATE mls_lut SET
-  school_name = ( SELECT school_name FROM det_gov_secondary_schools d WHERE d.ogc_fid = fid)
-  WHERE f_table_name = 'det_gov_secondary_schools';
+alter table mls_lut add column school_name text;
+update mls_lut set
+  school_name = ( select school_name from det_gov_primary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_gov_primary_schools';
+update mls_lut set
+  school_name = ( select school_name from det_gov_secondary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_gov_secondary_schools';
 
 -- Add the school's nearest road node to the LUT --;
-ALTER TABLE mls_lut ADD COLUMN end_node INTEGER;
-UPDATE mls_lut SET
-  end_node = ( SELECT nearest_road_node_id FROM det_gov_primary_schools d WHERE d.ogc_fid = fid)
-  WHERE f_table_name = 'det_gov_primary_schools';
-UPDATE mls_lut SET
-  end_node = ( SELECT nearest_road_node_id FROM det_gov_secondary_schools d WHERE d.ogc_fid = fid)
-  WHERE f_table_name = 'det_gov_secondary_schools';
+alter table mls_lut add column end_node integer;
+update mls_lut set
+  end_node = ( select nearest_road_node_id from det_gov_primary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_gov_primary_schools';
+update mls_lut set
+  end_node = ( select nearest_road_node_id from det_gov_secondary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_gov_secondary_schools';
 
-CREATE INDEX mls_lut_start_node ON mls_lut ( start_node );
-CREATE INDEX mls_lut_end_node ON mls_lut ( end_node );
+create index mls_lut_start_node on mls_lut ( start_node );
+create index mls_lut_end_node on mls_lut ( end_node );
 
-ALTER TABLE mls_lut ADD COLUMN travel_distance REAL;
-UPDATE mls_lut SET
-  travel_distance = ( SELECT max ( cost ) FROM roads_net WHERE NodeFrom = start_node AND NodeTo = end_node );
+alter table mls_lut add column travel_distance real;
+update mls_lut set
+  travel_distance = ( select max ( cost ) from roads_net where nodefrom = start_node and nodeto = end_node );
 
 -- Test results for Sassafras Close Point Cook --;
 select mls_lut.*
