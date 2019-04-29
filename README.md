@@ -94,7 +94,32 @@ Press Ctrl-C to return to standard command prompt.
 .\spatialite_network -d MyLocalSchool.sqlite -T road_arcs -f node_from -t node_to -g geometry --oneway-fromto oneway_ft --oneway-tofrom oneway_tf -n name -o roads_data -v roads_net --overwrite-output
 ```
 
-Test the route between two random nodes
+#### Identify nodes found to not be on the road network
+
+*Create a list of road nodes that don't connect to a known connected road node (eg, Watton Street Werribee: node 1861271106)*
+
+```
+create table road_nodes_disconnected_lut as
+select node_id from
+(
+select r.*, n.node_id, n.geometry, max ( r.cost ) as travel_distance
+from roads_net r, road_nodes n
+where r.NodeFrom = n.node_id and r.NodeTo = 1861271106
+and n.node_id <> 1861271106
+group by n.node_id
+)
+where travel_distance = 0 or travel_distance is null;
+
+create index road_nodes_disconnected_lut_node_id on road_nodes_disconnected_lut ( node_id );
+```
+
+Press Ctrl-C to return to standard command prompt.
+
+```
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from road_nodes where node_id not in ( select node_id from road_nodes_disconnected_lut )" -nln road_nodes_connected -nlt POINT -t_srs EPSG:4326 -update
+```
+
+#### Test the route between two random nodes
 
 ```
 .\spatialite MyLocalSchool.sqlite
@@ -151,12 +176,26 @@ delete from det_schools where not lga_id in ( '726' , '275' , '515' , '465' , '1
 CREATE VIRTUAL TABLE knn USING VirtualKNN();
 
 -- Update Meshblocks Points with nearest road nodes (12 minutes for Wyndham LGA alone) --
-ALTER TABLE abs_meshblocks_points ADD COLUMN nearest_road_node INTEGER;
+ALTER TABLE abs_meshblocks_points ADD COLUMN nearest_road_node_fid INTEGER;
+ALTER TABLE abs_meshblocks_points ADD COLUMN nearest_road_node_id INTEGER;
 UPDATE abs_meshblocks_points SET
-  nearest_road_node = ( select fid from knn where f_table_name = 'road_nodes' and ref_geometry = geometry and max_items = 1 )
+  nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 )
   WHERE ST_Within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) );
+UPDATE abs_meshblocks_points SET
+  nearest_road_node_id = ( select node_id from road_nodes_connected where ogc_fid = nearest_road_node_fid )
+  WHERE nearest_road_node_fid is not null;
 CREATE INDEX abs_meshblocks_points_mb_16pid ON abs_meshblocks_points ( mb_16pid );
-CREATE INDEX abs_meshblocks_points_nearest_road_node ON abs_meshblocks_points ( nearest_road_node );
+CREATE INDEX abs_meshblocks_points_nearest_road_node_id ON abs_meshblocks_points ( nearest_road_node_id );
+
+ALTER TABLE det_schools ADD COLUMN nearest_road_node_fid INTEGER;
+ALTER TABLE det_schools ADD COLUMN nearest_road_node_id INTEGER;
+
+UPDATE det_schools SET
+  nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 )
+  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
+UPDATE det_schools SET
+  nearest_road_node_id = ( select node_id from road_nodes_connected where ogc_fid = nearest_road_node_fid )
+  WHERE nearest_road_node_fid is not null;
 ```
 
 Press Ctrl-C to return to standard command prompt.
@@ -171,26 +210,6 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where education_sector = 'Government' and school_type in ( 'Secondary' , 'Pri/Sec' ) and school_name != 'Suzanne Cory High School'" -nln det_gov_secondary_schools -nlt POINT -t_srs EPSG:4326 -update
 ```
 
-### Update schools layers with nearest road nodes (2 minutes for schools in Wyndham and surrounding LGAs only)
-
-*Note: the schools must be processed separately for the knn process to associate the fid with the features in the corresponding table.*
-
-```
-.\spatialite MyLocalSchool.sqlite
-
--- Update Primary Schools
-ALTER TABLE det_gov_primary_schools ADD COLUMN nearest_road_node INTEGER;
-UPDATE det_schools SET
-  nearest_road_node = ( select fid from knn where f_table_name = 'road_nodes' and ref_geometry = geometry and max_items = 1 )
-  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
-
--- Update Secondary Schools
-ALTER TABLE det_gov_secondary_schools ADD COLUMN nearest_road_node INTEGER;
-UPDATE det_schools SET
-  nearest_road_node = ( select fid from knn where f_table_name = 'road_nodes' and ref_geometry = geometry and max_items = 1 )
-  WHERE lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
-```
-
 ### Create and populate master look-up table
 
 ```
@@ -198,7 +217,7 @@ UPDATE det_schools SET
 
 -- Create look-up-table of meshblock points and their nearest schools (up to 28 minutes for whole of Victoria, 1-2 minutes for Wyndham) --
 CREATE TABLE mls_lut AS
-SELECT p.mb_16pid, p.nearest_road_node as start_node, k.*
+SELECT p.mb_16pid, p.nearest_road_node_id as start_node, k.*
 FROM knn k, abs_meshblocks_points p
 WHERE f_table_name in ( 'det_gov_primary_schools' , 'det_gov_secondary_schools' )
 AND k.ref_geometry = p.geometry
@@ -216,10 +235,10 @@ UPDATE mls_lut SET
 -- Add the school's nearest road node to the LUT --;
 ALTER TABLE mls_lut ADD COLUMN end_node INTEGER;
 UPDATE mls_lut SET
-  end_node = ( SELECT nearest_road_node FROM det_gov_primary_schools d WHERE d.ogc_fid = fid)
+  end_node = ( SELECT nearest_road_node_id FROM det_gov_primary_schools d WHERE d.ogc_fid = fid)
   WHERE f_table_name = 'det_gov_primary_schools';
 UPDATE mls_lut SET
-  end_node = ( SELECT nearest_road_node FROM det_gov_secondary_schools d WHERE d.ogc_fid = fid)
+  end_node = ( SELECT nearest_road_node_id FROM det_gov_secondary_schools d WHERE d.ogc_fid = fid)
   WHERE f_table_name = 'det_gov_secondary_schools';
 
 CREATE INDEX mls_lut_start_node ON mls_lut ( start_node );
@@ -233,10 +252,6 @@ UPDATE mls_lut SET
 select mls_lut.*
 from mls_lut
 where mb_16pid = 'MB1620633179000';
-
---- Test navigating from Sassafras Close to Point Cook P-9; returns null because school's nearest road node is on disconnected path --;
-SELECT * FROM roads_net WHERE NodeFrom = 2120747207 AND NodeTo = 2147483647;
-```
 
 ### Generate DET School Zones layer (Voronoi polygons)
 
