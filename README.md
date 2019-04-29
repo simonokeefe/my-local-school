@@ -67,7 +67,7 @@ C:\MyLocalSchool
 
 Open command line at `C:\MyLocalSchool`
 
-```
+```bash
 ### Create Database using OpenStreetMap Roads, bounded by LGA coords ###
 .\spatialite_osm_overpass --help
 .\spatialite_osm_overpass -d MyLocalSchool.sqlite -minx 144.44 -maxx 144.84 -miny -38.02 -maxy -37.78 -mode ROAD
@@ -75,7 +75,7 @@ Open command line at `C:\MyLocalSchool`
 
 ### Clean road data
 
-```
+```sql
 .\spatialite .\MyLocalSchool.sqlite
 
 -- Clean Roads Data --;
@@ -89,7 +89,7 @@ Press Ctrl-C to return to standard command prompt.
 
 ### Generate road network
 
-```
+```bash
 .\spatialite_network --help
 .\spatialite_network -d MyLocalSchool.sqlite -T road_arcs -f node_from -t node_to -g geometry --oneway-fromto oneway_ft --oneway-tofrom oneway_tf -n name -o roads_data -v roads_net --overwrite-output
 ```
@@ -98,7 +98,7 @@ Press Ctrl-C to return to standard command prompt.
 
 *Create a list of road nodes that don't connect to a known connected road node (eg, Watton Street Werribee: node 1861271106)*
 
-```
+```sql
 create table road_nodes_disconnected_lut as
 select node_id from
 (
@@ -115,13 +115,13 @@ create index road_nodes_disconnected_lut_node_id on road_nodes_disconnected_lut 
 
 Press Ctrl-C to return to standard command prompt.
 
-```
+```bash
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from road_nodes where node_id not in ( select node_id from road_nodes_disconnected_lut )" -nln road_nodes_connected -nlt POINT -t_srs EPSG:4326 -update
 ```
 
 #### Test the route between two random nodes
 
-```
+```sql
 .\spatialite MyLocalSchool.sqlite
 SELECT * FROM roads_net WHERE NodeFrom = 347257370 AND NodeTo = 347748405;
 ```
@@ -130,7 +130,7 @@ Press Ctrl-C to return to standard command prompt.
 
 ### Populate database with DET and ABS datasetes
 
-```
+```bash
 ### Add Schools from Victorian Department of Education CSV ###
 ### (need to alter filename `dv259-allschoolslist-2018.csv` to `dv259_allschoolslist_2018.csv` to avoid issues with import)
 copy ".\Data\DET\dv259-allschoolslist-2018.csv" ".\Data\DET\dv259_allschoolslist_2018.csv"
@@ -148,7 +148,7 @@ ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\Local Government Areas AUGUST 2018\Sta
 
 ### Add missing schools to DET School
 
-```
+```sql
 .\spatialite MyLocalSchool.sqlite
 
 -- Edit DET Schools table with updated information --
@@ -165,14 +165,14 @@ INSERT INTO det_schools
 
 ### Optimise tables for processing single LGA
 
-```
+```sql
 delete from abs_meshblocks_points where not ST_Within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) )
 delete from det_schools where not lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
 ```
 
 ### Update and populate tables with nearest road arcs
 
-```
+```sql
 CREATE VIRTUAL TABLE knn USING VirtualKNN();
 
 -- Update Meshblocks Points with nearest road nodes (12 minutes for Wyndham LGA alone) --
@@ -202,7 +202,7 @@ Press Ctrl-C to return to standard command prompt.
 
 ### Create separate layers for government primary and secondary schools
 
-```
+```bash
 ### Create Government Primary Schools Layer
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where education_sector = 'Government' and school_type in ( 'Primary' , 'Pri/Sec' )" -nln det_gov_primary_schools -nlt POINT -t_srs EPSG:4326 -update
 
@@ -212,7 +212,7 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 
 ### Create and populate master look-up table
 
-```
+```sql
 .\spatialite MyLocalSchool.sqlite
 
 -- Create look-up-table of meshblock points and their nearest schools (up to 28 minutes for whole of Victoria, 1-2 minutes for Wyndham) --
@@ -252,6 +252,7 @@ UPDATE mls_lut SET
 select mls_lut.*
 from mls_lut
 where mb_16pid = 'MB1620633179000';
+```
 
 ### Generate DET School Zones layer (Voronoi polygons)
 
