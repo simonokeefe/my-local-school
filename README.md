@@ -8,7 +8,7 @@
 
 Victoria's current school zones make no sense. They increase travel distances, and add more cars to our roads at the busiest time of day. They fail because they don't take into account the paths and roads we use to travel.
 
-**My Local School** uses open data from the Australian Bureau of Statistics, PSMA and Wyndham City Council to generate alternative school intake zones. These geographic datasets represent neighbourhood units that, combined with routing analysis, form cohesive community regions for fairer school intake zones. Households within these zones have the certainty that their assigned school is the shortest travel distance for their neighbourhood.
+**My Local School** uses open data from the Australian Bureau of Statistics, PSMA and OpenStreetMap to generate alternative school intake zones. These geographic datasets represent neighbourhood units that, combined with routing analysis, form cohesive community regions for fairer school intake zones. Households within these zones have the certainty that their assigned school is the shortest travel distance for their neighbourhood.
 
 My Local School started as a project for [GovHack 2018](https://hackerspace.govhack.org/projects/my_local_school_280), and received the runner-up award for the [Growing Wyndham challenge](https://hackerspace.govhack.org/challenges/growing_wyndham).
 
