@@ -151,9 +151,12 @@ ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\Local Government Areas AUGUST 2018\Sta
 .\spatialite MyLocalSchool.sqlite
 
 -- Edit DET Schools table with updated information --
+update det_schools set
+  school_name = 'Carranballac P-9 College - Boardwalk Campus'
+  where school_name = 'Carranballac P-9 College';
 insert into det_schools
     (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  values (100001, 'Government', 'Carranballac P-9 College Jamieson Way Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.745775,-37.8951,4326));
+  values (100001, 'Government', 'Carranballac P-9 College - Jamieson Way Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.745775,-37.8951,4326));
 insert into det_schools
     (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
   values (100002, 'Government', 'Laverton P-12 College Laverton Primary School', 'Pri/Sec', 311, 'Hobsons Bay (C)', MakePoint(144.7704261,-37.8653317,4326));
