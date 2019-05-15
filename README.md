@@ -268,6 +268,30 @@ from mls_lut
 where mb_16pid = 'MB1620633179000';
 ```
 
+### Create spatial table of neighbourhoods and their closest school
+
+#### Attempt 1 (using Spatialite)
+
+```sql
+create table mls_neighbourhood_local_primary_school as
+select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry
+from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid
+where f_table_name = 'det_gov_primary_schools'
+group by l.mb_16pid;
+
+select RecoverGeometryColumn ( 'mls_neighbourhood_local_primary_school' , 'geometry' , 4326 , 'MULTIPOLYGON' );
+```
+
+The `RecoverGeometryColumn` operation seems to fail for some reason.
+
+#### Attempt 2 (using ogr2ogr)
+
+Instead of using Spatialite, use ogr2ogr to do the query and create a spatial table in one step.
+
+```bash
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_primary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_primary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+```
+
 ### Generate DET School Zones layer (Voronoi polygons)
 
 #### Government Primary Schools
