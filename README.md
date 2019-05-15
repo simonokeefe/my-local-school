@@ -228,6 +228,15 @@ where f_table_name in ( 'det_gov_primary_schools' , 'det_gov_secondary_schools' 
 and k.ref_geometry = p.geometry
 and k.max_items = 5;
 
+-- Add school id to the LUT --
+alter table mls_lut add column school_no text;
+update mls_lut set
+  school_no = ( select school_no from det_gov_primary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_gov_primary_schools';
+update mls_lut set
+  school_no = ( select school_no from det_gov_secondary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_gov_secondary_schools';
+
 -- Add school name to the LUT. May not be necessary for final output, but useful for debugging --;
 alter table mls_lut add column school_name text;
 update mls_lut set
