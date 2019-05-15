@@ -25,6 +25,7 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 * [ABS Mesh Blocks and Statistical Areas](https://data.gov.au/dataset/psma-administrative-boundaries/resource/e350fd4f-c589-4804-a4e7-a1ead4987514) (Esri Shapefile)
 * [Local Government Areas](https://data.gov.au/dataset/psma-administrative-boundaries/resource/827752c4-a75e-4f86-9540-3bb96684e856) (Esri Shapefile)
 * [Victorian Department of Education and Training](https://discover.data.vic.gov.au/dataset/school-locations-time-series) (CSV)
+* [Vicmap Features of Interest](https://discover.data.vic.gov.au/dataset/vicmap-features-of-interest) (Esri Shapefile)
 * [OpenStreetMap](https://overpass-api.de/index.html)
 
 ### Software
@@ -44,6 +45,8 @@ Install QGIS and plugin, and unzip data and Spatialite executables to new folder
 ```
 C:\MyLocalSchool
   |--Data
+    |--DELWP
+      |--VMFOI
     |--DET
       |--dv259-allschoolslist-2018.csv
     |-- PSMA
