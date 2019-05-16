@@ -43,24 +43,24 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 Install QGIS and plugin, and unzip data and Spatialite executables to new folder `C:\MyLocalSchool\`. Here's how the folder should look.
 
 ```
-C:\MyLocalSchool
-  |--Data
-    |--DELWP
-      |--VMFOI
-    |--DET
-      |--dv259-allschoolslist-2018.csv
-    |-- PSMA
-      |-- 2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017
-        |--Standard
-          |--VIC_MB_2016_POLYGON_shp.shp
-      |--Local Government Areas AUGUST 2018
-        |--Standard
-          |--VIC_LGA_POLYGON_shp.shp
-  spatialite.exe
-  spatialite_osm_overpass.exe
-  spatialite_gui.exe
-  spatialite_network.exe
-  spatialite_osm_net.exe
+MyLocalSchool
+├── Data
+│   ├── DELWP
+│   │   └── VMFOI
+│   ├── DET
+│   │   └── dv259-allschoolslist-2018.csv
+│   └── PSMA
+│       ├── 2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017
+│       │   └── Standard
+│       │       └── VIC_MB_2016_POLYGON_shp.shp
+│       └── Local Government Areas AUGUST 2018
+│           └── Standard
+│               └── VIC_LGA_POLYGON_shp.shp
+├── spatialite.exe
+├── spatialite_osm_overpass.exe
+├── spatialite_gui.exe
+├── spatialite_network.exe
+└── spatialite_osm_net.exe
 ```
 
 ### Build Spatialite Database, starting with OpenStreetMap roads
