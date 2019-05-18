@@ -117,6 +117,8 @@ create index road_nodes_disconnected_lut_node_id on road_nodes_disconnected_lut 
 
 Press Ctrl-C to return to standard command prompt.
 
+#### Create table of connected road nodes by excluding disconnected ones
+
 ```bash
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from road_nodes where node_id not in ( select node_id from road_nodes_disconnected_lut )" -nln road_nodes_connected -nlt POINT -t_srs EPSG:4326 -update
 ```
@@ -139,13 +141,13 @@ copy ".\Data\DET\dv259-allschoolslist-2018.csv" ".\Data\DET\dv259_allschoolslist
 ogr2ogr MyLocalSchool.sqlite ".\Data\DET\dv259_allschoolslist_2018.csv" -dialect sqlite -sql "select *, MakePoint(cast(X as real),cast(Y as real),4326) Geometry from dv259_allschoolslist_2018" -nln det_schools -nlt POINT -t_srs EPSG:4326 -update
 
 ### Add ABS Meshblocks Shapefile ###
-ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017\Standard\VIC_MB_2016_POLYGON_shp.shp" VIC_MB_2016_POLYGON_shp -nlt POLYGON -nln abs_meshblocks -update
+ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017\Standard\VIC_MB_2016_POLYGON_shp.shp" VIC_MB_2016_POLYGON_shp -nlt POLYGON -t_srs EPSG:4326 -nln abs_meshblocks -update
 
 ### Create centroid layer for Meshblocks layer ###
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -sql "select mb_16pid, ST_PointOnSurface ( geometry ) as geometry from abs_meshblocks" -nlt POINT -nln abs_meshblocks_points -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -sql "select mb_16pid, ST_PointOnSurface ( geometry ) as geometry from abs_meshblocks" -nlt POINT -t_srs EPSG:4326 -nln abs_meshblocks_points -update
 
 ### Add PSMA LGA Shapefile ###
-ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\Local Government Areas AUGUST 2018\Standard\VIC_LGA_POLYGON_shp.shp" VIC_LGA_POLYGON_shp -nlt POLYGON -nln psma_lga -update
+ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\Local Government Areas AUGUST 2018\Standard\VIC_LGA_POLYGON_shp.shp" VIC_LGA_POLYGON_shp -nlt POLYGON -t_srs EPSG:4326 -nln psma_lga -update
 ```
 
 ### Add missing schools to DET School
@@ -270,26 +272,21 @@ where mb_16pid = 'MB1620633179000';
 
 ### Create spatial table of neighbourhoods and their closest school
 
-#### Attempt 1 (using Spatialite)
-
 ```sql
-create table mls_neighbourhood_local_primary_school as
-select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry
-from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid
+create table mls_neighbourhood_local_primary_school_test as
+select mb_16pid as mb_id, school_no, school_name, distance as straignt_line_distance, min ( travel_distance ) as travel_distance
+from mls_lut l
 where f_table_name = 'det_gov_primary_schools'
-group by l.mb_16pid;
+group by mb_16pid;
 
-select RecoverGeometryColumn ( 'mls_neighbourhood_local_primary_school' , 'geometry' , 4326 , 'MULTIPOLYGON' );
-```
+select AddGeometryColumn ( 'mls_neighbourhood_local_primary_school_test' , 'geometry' , 4326 , 'MULTIPOLYGON' , 2 );
 
-The `RecoverGeometryColumn` operation seems to fail for some reason.
+create index mls_neighbourhood_local_primary_school_test_mb_id on mls_neighbourhood_local_primary_school_test ( mb_id );
 
-#### Attempt 2 (using ogr2ogr)
+create index abs_meshblocks_mb_16pid on abs_meshblocks ( mb_16pid );
 
-Instead of using Spatialite, use ogr2ogr to do the query and create a spatial table in one step.
-
-```bash
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_primary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_primary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+update mls_neighbourhood_local_primary_school_test set
+  geometry = ( select CastToMultiPolygon ( geometry ) from abs_meshblocks m where m.mb_16pid = mb_id );
 ```
 
 ### Generate DET School Zones layer (Voronoi polygons)
