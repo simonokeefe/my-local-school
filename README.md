@@ -270,12 +270,20 @@ from mls_lut
 where mb_16pid = 'MB1620633179000';
 ```
 
-### Create spatial table of neighbourhoods and their closest school
+### Create spatial tables of neighbourhoods and zones
 
 ```bash
+### Generate Neighbourhood Local Primary School Table
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_primary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_primary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
+### Generate Neighbourhood Local Secondary School Table
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_secondary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_secondary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+
+### Generate Local Primary School Zone Table
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_union ( geometry ) as geometry from mls_neighbourhood_local_primary_school group by school_no" -nln mls_local_primary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+
+### Generate Local Primary Secondary Zone Table
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_union ( geometry ) as geometry from mls_neighbourhood_local_secondary_school group by school_no" -nln mls_local_secondary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 ```
 
 ### Generate DET School Zones layer (Voronoi polygons)
