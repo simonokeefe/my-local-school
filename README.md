@@ -280,10 +280,10 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_secondary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_secondary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
 ### Generate Local Primary School Zone Table
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_union ( geometry ) as geometry from mls_neighbourhood_local_primary_school group by school_no" -nln mls_local_primary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_primary_school group by school_no" -nln mls_local_primary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
 ### Generate Local Primary Secondary Zone Table
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_union ( geometry ) as geometry from mls_neighbourhood_local_secondary_school group by school_no" -nln mls_local_secondary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_secondary_school group by school_no" -nln mls_local_secondary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
 ### Generate GeoJSON files of school zones
 ogr2ogr -f GeoJSON mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=6
