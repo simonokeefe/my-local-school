@@ -94,33 +94,32 @@ Press Ctrl-C to return to standard command prompt.
 .\spatialite_network -d MyLocalSchool.sqlite -T road_arcs -f node_from -t node_to -g geometry --oneway-fromto oneway_ft --oneway-tofrom oneway_tf -n name -o roads_data -v roads_net --overwrite-output
 ```
 
-#### Identify nodes found to not be on the road network
+#### Create look-up table of the road nodes that are actually connected to the road network
 
-*Create a list of road nodes that don't connect to a known connected road node (eg, Watton Street Werribee: node 1861271106)*
+*Create a list of road nodes that connect to a known connected road node (eg, Watton Street Werribee: node 1861271106)*
 
 ```sql
 .\spatialite MyLocalSchool.sqlite
 
-create table road_nodes_disconnected_lut as
+create table road_nodes_connected_lut as
 select node_id from
 (
 select r.*, n.node_id, n.geometry, max ( r.cost ) as travel_distance
 from roads_net r, road_nodes n
 where r.NodeFrom = n.node_id and r.NodeTo = 1861271106
-and n.node_id <> 1861271106
 group by n.node_id
 )
-where travel_distance = 0 or travel_distance is null;
+where travel_distance > 0 or node_id = 1861271106;
 
-create index road_nodes_disconnected_lut_node_id on road_nodes_disconnected_lut ( node_id );
+create index road_nodes_connected_lut_node_id on road_nodes_connected_lut ( node_id );
 ```
 
 Press Ctrl-C to return to standard command prompt.
 
-#### Create table of connected road nodes by excluding disconnected ones
+#### Create table of connected road nodes by including only connected ones
 
 ```bash
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from road_nodes where node_id not in ( select node_id from road_nodes_disconnected_lut )" -nln road_nodes_connected -nlt POINT -t_srs EPSG:4326 -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from road_nodes where node_id in ( select node_id from road_nodes_connected_lut )" -nln road_nodes_connected -nlt POINT -t_srs EPSG:4326 -update
 ```
 
 #### Test the route between two random nodes
