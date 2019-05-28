@@ -285,6 +285,6 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select s
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_secondary_school group by school_no" -nln mls_local_secondary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
 ### Generate GeoJSON files of school zones
-ogr2ogr -f GeoJSON mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=8
-ogr2ogr -f GeoJSON mls_local_secondary_school_zone.json MyLocalSchool.sqlite mls_local_secondary_school_zone -lco SIGNIFICANT_FIGURES=8
+ogr2ogr -f GeoJSON Data/mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=8
+ogr2ogr -f GeoJSON Data/mls_local_secondary_school_zone.json MyLocalSchool.sqlite mls_local_secondary_school_zone -lco SIGNIFICANT_FIGURES=8
 ```
