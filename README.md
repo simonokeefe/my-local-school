@@ -288,33 +288,3 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select s
 ogr2ogr -f GeoJSON mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=8
 ogr2ogr -f GeoJSON mls_local_secondary_school_zone.json MyLocalSchool.sqlite mls_local_secondary_school_zone -lco SIGNIFICANT_FIGURES=8
 ```
-
-### Generate DET School Zones layer (Voronoi polygons)
-
-#### Government Primary Schools
-
-QGIS > Vector > Geometry Tools > Voronoi Polygons > 
-
-* Input layer: `det_gov_primary_schools`
-* Buffer region: 10
-
-QGIS > select layer `Voronoi polygons`: Layer > Save as >
-
-* Format: Spatialite
-* File name: `C:\MyLocalSchool\MyLocalSchool.sqlite`
-* Layer name: `det_gov_primary_school_zones`
-
-#### Government Secondary Schools
-
-QGIS > Vector > Geometry Tools > Voronoi Polygons > 
-
-* Input layer: `det_gov_secondary_schools`
-* Buffer region: 10
-
-QGIS > select layer `Voronoi polygons`: Layer > Save as >
-
-* Format: Spatialite
-* File name: `C:\MyLocalSchool\MyLocalSchool.sqlite`
-* Layer name: `det_gov_secondary_school_zones`
-
-
