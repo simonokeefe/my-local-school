@@ -1,12 +1,16 @@
 # Generate Victorian Schools Layer
 
+This document describes how to obtain the location of all Victorian schools from the Victorian Department of Education and Training website findmyschool.vic.gov.au and create a map layer file that can be used in GIS software.
+
+## Background
+
 The Victorian Department of Education and Training website findmyschool.vic.gov.au contains a map that shows the locations of all Victorian schools. However this school data is not available in an open format, making it hard to use for enquiry and analysis purposes.
 
 *(The Department has published a list of schools at https://discover.data.vic.gov.au/dataset/school-locations-time-series, but this data is incomplete and out of date.)*
 
 ## Data Contents
 
-Within the contents of a .js file on the findmyschool.vic.gov.au website are the details of 1774 schools.
+Within the contents of a `.js` file on the findmyschool.vic.gov.au website are the details of 1774 schools.
 
 Example school:
 
@@ -89,7 +93,7 @@ The following process shows step-by-step how to extract the school location data
   * `coordinates:` > `"coordinates":`
 * save as a `.json` file
 
-The file is now in GeoJSON format, and can be used in a variety of web and desktop applications.
+The file is now a GeoJSON file, which is an open format that can be used in a variety of web and desktop applications.
 
 To quickly preview the file, open http://geojson.io and drag the file onto the map.
 
