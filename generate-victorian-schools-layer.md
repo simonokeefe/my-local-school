@@ -95,6 +95,8 @@ The following process shows step-by-step how to extract the school location data
 
 The file is now a GeoJSON file, which is an open format that can be used in a variety of web and desktop applications.
 
+Example (generated on 28 May 2019): https://github.com/simonokeefe/my-local-school/blob/master/data/app.ee3e8565.json
+
 To quickly preview the file, open http://geojson.io and drag the file onto the map.
 
 ### Generate CSV
