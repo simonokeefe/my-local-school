@@ -304,3 +304,10 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select s
 ogr2ogr -f GeoJSON Data/mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=8
 ogr2ogr -f GeoJSON Data/mls_local_secondary_school_zone.json MyLocalSchool.sqlite mls_local_secondary_school_zone -lco SIGNIFICANT_FIGURES=8
 ```
+
+## To Do
+
+* [ ] substitute new school dataset into workflow
+* [ ] create QGIS project
+* [ ] update Pozi map with generated school zones of Wyndham
+* [ ] document how to extract DET school zones from findmyschool.vic.gov.au
