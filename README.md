@@ -61,9 +61,10 @@ MyLocalSchool
 │   │   │       └── app.ee3e8565.json
 │   │   │   └── tiles
 │   │   │       └── catchments_primary_2020
-│   │   │           ├── 7
-│   │   │           ├── 8
-│   │   │           └── etc
+│   │   │           └── 9
+│   │   │               ├── 456
+│   │   │               ├── 457
+│   │   │               └── etc
 │   │   └── dv259-allschoolslist-2018.csv
 │   └── PSMA
 │       ├── 2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017
@@ -300,14 +301,33 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select s
 ### Generate Local Primary Secondary Zone Table
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_secondary_school group by school_no" -nln mls_local_secondary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
-### Generate GeoJSON files of school zones
+### Export GeoJSON files of school zones
 ogr2ogr -f GeoJSON Data/mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=8
 ogr2ogr -f GeoJSON Data/mls_local_secondary_school_zone.json MyLocalSchool.sqlite mls_local_secondary_school_zone -lco SIGNIFICANT_FIGURES=8
 ```
 
+## Pros and cons of this approach
+
+### Pros
+
+* zones reflect natural and man-made boundaries, such as creeks, highways
+
+### Cons
+
+* all paths are considered equal, therefore it doesn't take into account crossing busy roads
+
 ## To Do
 
+* [ ] remove references to old Melbourne School Zones data
 * [ ] substitute new school dataset into workflow
-* [ ] create QGIS project
+* [ ] populate meshblock point layer with lga to make it easy to filter by different lgas
+* [ ] investigate if it's possible to exclude footbridges when routing for primary schools (to avoid Sanctuary Lakes-Altona Green Primary zone situation)
+* [ ] investigate phantom pedestrian underpass under Princess Freeway in OpenStreetMap; edit OSM if necessary
+* [ ] investigate "disconnected" road nodes issue
 * [ ] update Pozi map with generated school zones of Wyndham
-* [ ] document how to extract DET school zones from findmyschool.vic.gov.au
+* [ ] re-run entire process again to ensure workflow is still valid and record the time taken for each operation
+* [ ] add findmyschool vector tiles to web map
+* [ ] add alternative entrance to Point Cook P-9 to ensure the neighbourhood across the street from the back entrance are included in school's zone
+* [ ] switch process to whole of Victoria instead of Wyndham (`.\spatialite_osm_overpass -d MyLocalSchool.sqlite -minx 141 -maxx 150 -miny -39 -maxy -34 -mode ROAD`)
+```
+
