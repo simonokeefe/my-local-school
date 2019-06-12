@@ -64,8 +64,7 @@ The following process shows step-by-step how to extract the school location data
 
 ### Generate GeoJSON
 
-* open a new tab in your browser, and press F12 to open the console window
-* click on the Network tab
+* in your browser, open the developer tools (Ctrl-Shift-I), then click the Network tab
 * open website https://www.findmyschool.vic.gov.au/
 * sort Network list by size
 * select largest file (eg app.ee3e8565.js, 1.4 MB) > right click > Save as... save to your local PC

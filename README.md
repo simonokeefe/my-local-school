@@ -22,13 +22,13 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 
 ### Data Sources
 
-* [ABS Mesh Blocks and Statistical Areas](https://data.gov.au/dataset/psma-administrative-boundaries/resource/e350fd4f-c589-4804-a4e7-a1ead4987514) (Esri Shapefile)
-* [Local Government Areas](https://data.gov.au/dataset/psma-administrative-boundaries/resource/827752c4-a75e-4f86-9540-3bb96684e856) (Esri Shapefile)
+* [ABS Mesh Blocks and Statistical Areas](https://data.gov.au/dataset/psma-administrative-boundaries/resource/e350fd4f-c589-4804-a4e7-a1ead4987514) (Shapefile)
+* [Local Government Areas](https://data.gov.au/dataset/psma-administrative-boundaries/resource/827752c4-a75e-4f86-9540-3bb96684e856) (Shapefile)
 * Victorian Department of Education and Training
   * School Locations (2018): https://discover.data.vic.gov.au/dataset/school-locations-time-series (CSV)
   * School Locations (2020): https://www.findmyschool.vic.gov.au/js/app.ee3e8565.js (JS)
   * Primary School Catchments: https://www.findmyschool.vic.gov.au/tiles/catchments-primary-2020/{z}/{x}/{y}.pbf (Mapbox Vector Tiles)
-* [Vicmap Features of Interest](https://discover.data.vic.gov.au/dataset/vicmap-features-of-interest) (Esri Shapefile)
+* [Vicmap Features of Interest](https://discover.data.vic.gov.au/dataset/vicmap-features-of-interest) (Shapefile)
 * [OpenStreetMap](https://overpass-api.de/index.html)
 
 ### Software
@@ -45,7 +45,7 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 
 Install QGIS and plugin, and unzip data and Spatialite executables to new folder `C:\MyLocalSchool\`.
 
-Follow the process documented in [Generate Victorian Schools Layer](generate-victorian-schools-layer.md) to create the schools GeoJSON file.
+Follow the processes documented in [Generate Victorian Schools Layer](generate-victorian-schools-layer.md) and [Generate Victorian Schools Zones Layers](generate-victorian-schools-zones-layers.md) to create the schools GeoJSON file.
 
 Here's how the folder should look.
 
@@ -56,9 +56,9 @@ MyLocalSchool
 │   │   └── VMFOI
 │   ├── DET
 │   │   ├── findmyschool.vic.gov.au
-│   │   │   └── js
-│   │   │       ├── app.ee3e8565.js
-│   │   │       └── app.ee3e8565.json
+│   │   │   ├── js
+│   │   │   │   ├── app.ee3e8565.js
+│   │   │   │   └── app.ee3e8565.json
 │   │   │   └── tiles
 │   │   │       └── catchments_primary_2020
 │   │   │           └── 9
@@ -318,7 +318,6 @@ ogr2ogr -f GeoJSON Data/mls_local_secondary_school_zone.json MyLocalSchool.sqlit
 
 ## To Do
 
-* [ ] remove references to old Melbourne School Zones data
 * [ ] substitute new school dataset into workflow
 * [ ] populate meshblock point layer with lga to make it easy to filter by different lgas
 * [ ] investigate if it's possible to exclude footbridges when routing for primary schools (to avoid Sanctuary Lakes-Altona Green Primary zone situation)

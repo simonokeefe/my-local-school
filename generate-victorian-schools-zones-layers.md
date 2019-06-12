@@ -26,8 +26,7 @@ The following process shows how to extract the school zone data from the vector 
 
 *Skip to code block below if you're not interested in recreating the methodology.*
 
-* open a new tab in your browser, and press F12 to open the console window
-* click on the Network tab
+* in your browser, open the developer tools (Ctrl-Shift-I), then click the Network tab
 * open website https://www.findmyschool.vic.gov.au/
 * zoom map and check the zoom level on the tile request URLs (eg https://www.findmyschool.vic.gov.au/tiles/catchments-primary-2020/8/230/157.pbf indicates that it's a level 8 request because of the `/8/`)
 * zoom until you start seeing level 9 requests (when it contains `/9/`)
