@@ -223,14 +223,11 @@ update det_schools set
 
 Press Ctrl-C to return to standard command prompt.
 
-### Create separate layers for government primary and secondary schools
+### Create layer for government primary schools
 
 ```bash
 ### Create Government Primary Schools Layer
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where education_sector = 'Government' and school_type in ( 'Primary' , 'Pri/Sec' )" -nln det_gov_primary_schools -nlt POINT -t_srs EPSG:4326 -update
-
-### Create Government Secondary Schools Layer
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where education_sector = 'Government' and school_type in ( 'Secondary' , 'Pri/Sec' ) and school_name != 'Suzanne Cory High School'" -nln det_gov_secondary_schools -nlt POINT -t_srs EPSG:4326 -update
 ```
 
 ### Create and populate master look-up table
@@ -251,27 +248,18 @@ alter table mls_lut add column school_no text;
 update mls_lut set
   school_no = ( select school_no from det_gov_primary_schools d where d.ogc_fid = fid)
   where f_table_name = 'det_gov_primary_schools';
-update mls_lut set
-  school_no = ( select school_no from det_gov_secondary_schools d where d.ogc_fid = fid)
-  where f_table_name = 'det_gov_secondary_schools';
 
 -- Add school name to the LUT. May not be necessary for final output, but useful for debugging --;
 alter table mls_lut add column school_name text;
 update mls_lut set
   school_name = ( select school_name from det_gov_primary_schools d where d.ogc_fid = fid)
   where f_table_name = 'det_gov_primary_schools';
-update mls_lut set
-  school_name = ( select school_name from det_gov_secondary_schools d where d.ogc_fid = fid)
-  where f_table_name = 'det_gov_secondary_schools';
 
 -- Add the school's nearest road node to the LUT --;
 alter table mls_lut add column end_node integer;
 update mls_lut set
   end_node = ( select nearest_road_node_id from det_gov_primary_schools d where d.ogc_fid = fid)
   where f_table_name = 'det_gov_primary_schools';
-update mls_lut set
-  end_node = ( select nearest_road_node_id from det_gov_secondary_schools d where d.ogc_fid = fid)
-  where f_table_name = 'det_gov_secondary_schools';
 
 create index mls_lut_start_node on mls_lut ( start_node );
 create index mls_lut_end_node on mls_lut ( end_node );
@@ -292,18 +280,11 @@ where mb_16pid = 'MB1620633179000';
 ### Generate Neighbourhood Local Primary School Table
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_primary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_primary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
-### Generate Neighbourhood Local Secondary School Table
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_secondary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_secondary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
-
 ### Generate Local Primary School Zone Table
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_primary_school group by school_no" -nln mls_local_primary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
-### Generate Local Primary Secondary Zone Table
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_secondary_school group by school_no" -nln mls_local_secondary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
-
-### Export GeoJSON files of school zones
+### Export GeoJSON file of school zones
 ogr2ogr -f GeoJSON Data/mls_local_primary_school_zone.json MyLocalSchool.sqlite mls_local_primary_school_zone -lco SIGNIFICANT_FIGURES=8
-ogr2ogr -f GeoJSON Data/mls_local_secondary_school_zone.json MyLocalSchool.sqlite mls_local_secondary_school_zone -lco SIGNIFICANT_FIGURES=8
 ```
 
 ## Pros and cons of this approach
