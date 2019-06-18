@@ -45,27 +45,24 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 
 Install QGIS and plugin, and unzip data and Spatialite executables to new folder `C:\MyLocalSchool\`.
 
-Follow the processes documented in [Generate Victorian Schools Layer](generate-victorian-schools-layer.md) and [Generate Victorian Schools Zones Layers](generate-victorian-schools-zones-layers.md) to create the schools GeoJSON file.
+Follow the processes documented in [Generate Victorian Schools Layer](generate-victorian-schools-layer.md) and [Generate Victorian Schools Zones Layers](generate-victorian-schools-zones-layers.md) to create the schools GeoJSON files.
 
 Here's how the folder should look.
 
 ```
 MyLocalSchool
 ├── Data
-│   ├── DELWP
-│   │   └── VMFOI
 │   ├── DET
-│   │   ├── findmyschool.vic.gov.au
-│   │   │   ├── js
-│   │   │   │   ├── app.ee3e8565.js
-│   │   │   │   └── app.ee3e8565.json
-│   │   │   └── tiles
-│   │   │       └── catchments_primary_2020
-│   │   │           └── 9
-│   │   │               ├── 456
-│   │   │               ├── 457
-│   │   │               └── etc
-│   │   └── dv259-allschoolslist-2018.csv
+│   │   └── findmyschool.vic.gov.au
+│   │       ├── js
+│   │       │   ├── app.ee3e8565.js
+│   │       │   └── app.ee3e8565.json
+│   │       └── tiles
+│   │           └── catchments_primary_2020
+│   │               └── 9
+│   │                   ├── 456
+│   │                   ├── 457
+│   │                   └── etc
 │   └── PSMA
 │       ├── 2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017
 │       │   └── Standard
@@ -85,7 +82,7 @@ MyLocalSchool
 Open command line at `C:\MyLocalSchool`
 
 ```bash
-### Create Database using OpenStreetMap Roads, bounded by LGA coords ###
+### Create Database using OpenStreetMap Roads, bounded by LGA coords
 .\spatialite_osm_overpass --help
 .\spatialite_osm_overpass -d MyLocalSchool.sqlite -minx 144.44 -maxx 144.84 -miny -38.02 -maxy -37.78 -mode ROAD
 ```
@@ -113,7 +110,7 @@ Press Ctrl-C to return to standard command prompt.
 
 #### Create look-up table of the road nodes that are actually connected to the road network
 
-*Create a list of road nodes that connect to a known connected road node (eg, Watton Street Werribee: node 1861271106)*
+*Create a list of road nodes that connect to a known connected road node (eg, Watton Street Werribee: node 1861271106). Takes 2-3 minutes to process nodes in Wyndham LGA bounding box.*
 
 ```sql
 .\spatialite MyLocalSchool.sqlite
@@ -151,46 +148,24 @@ Press Ctrl-C to return to standard command prompt.
 ### Populate database with DET and ABS datasetes
 
 ```bash
-### Add Schools from Victorian Department of Education CSV ###
-### (need to alter filename `dv259-allschoolslist-2018.csv` to `dv259_allschoolslist_2018.csv` to avoid issues with import)
-copy ".\Data\DET\dv259-allschoolslist-2018.csv" ".\Data\DET\dv259_allschoolslist_2018.csv"
-ogr2ogr MyLocalSchool.sqlite ".\Data\DET\dv259_allschoolslist_2018.csv" -dialect sqlite -sql "select *, MakePoint(cast(X as real),cast(Y as real),4326) Geometry from dv259_allschoolslist_2018" -nln det_schools -nlt POINT -t_srs EPSG:4326 -update
+### Add Schools from Victorian Department of Education GeoJSON
+ogr2ogr MyLocalSchool.sqlite ".\Data\DET\findmyschool.vic.gov.au\js\app.ee3e8565.json" Allschools_DNB_with_other_schools -nln det_schools -update
 
-### Add ABS Meshblocks Shapefile ###
+### Add ABS Meshblocks Shapefile
 ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\2016 ABS Mesh Blocks and Statistical Areas NOVEMBER 2017\Standard\VIC_MB_2016_POLYGON_shp.shp" VIC_MB_2016_POLYGON_shp -nlt POLYGON -t_srs EPSG:4326 -nln abs_meshblocks -update
 
-### Create centroid layer for Meshblocks layer ###
+### Create centroid layer for Meshblocks layer
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -sql "select mb_16pid, ST_PointOnSurface ( geometry ) as geometry from abs_meshblocks" -nlt POINT -t_srs EPSG:4326 -nln abs_meshblocks_points -update
 
-### Add PSMA LGA Shapefile ###
+### Add PSMA LGA Shapefile
 ogr2ogr MyLocalSchool.sqlite ".\Data\PSMA\Local Government Areas AUGUST 2018\Standard\VIC_LGA_POLYGON_shp.shp" VIC_LGA_POLYGON_shp -nlt POLYGON -t_srs EPSG:4326 -nln psma_lga -update
-```
-
-### Add missing schools to DET School
-
-```sql
-.\spatialite MyLocalSchool.sqlite
-
--- Edit DET Schools table with updated information --
-update det_schools set
-  school_name = 'Carranballac P-9 College - Boardwalk Campus'
-  where school_name = 'Carranballac P-9 College';
-insert into det_schools
-    (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  values (100001, 'Government', 'Carranballac P-9 College - Jamieson Way Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.745775,-37.8951,4326));
-insert into det_schools
-    (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  values (100002, 'Government', 'Laverton P-12 College Laverton Primary School', 'Pri/Sec', 311, 'Hobsons Bay (C)', MakePoint(144.7704261,-37.8653317,4326));
-insert into det_schools
-    (school_no, education_sector, school_name, school_type, lga_id, lga_name, geometry)
-  values (100003, 'Government', 'Baden Powell P-9 College Tarneit Campus', 'Pri/Sec', 726, 'Wyndham (C)', MakePoint(144.69418,-37.84238,4326));
 ```
 
 ### Optimise tables for processing single LGA
 
 ```sql
-delete from abs_meshblocks_points where not ST_Within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) )
-delete from det_schools where not lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
+delete from abs_meshblocks_points where not ST_Within ( geometry , ( select ST_Envelope ( geometry ) from psma_lga where lga_pid = 'VIC221' ) );
+delete from det_schools where not ST_Within ( geometry , ( select ST_Envelope ( geometry ) from psma_lga where lga_pid = 'VIC221' ) );
 ```
 
 ### Update and populate tables with nearest road arcs
@@ -202,8 +177,7 @@ create virtual table knn using VirtualKNN();
 alter table abs_meshblocks_points add column nearest_road_node_fid integer;
 alter table abs_meshblocks_points add column nearest_road_node_id integer;
 update abs_meshblocks_points set
-  nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 )
-  where st_within ( geometry , ( select geometry from psma_lga where lga_pid = 'VIC221' ) );
+  nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 );
 update abs_meshblocks_points set
   nearest_road_node_id = ( select node_id from road_nodes_connected where ogc_fid = nearest_road_node_fid )
   where nearest_road_node_fid is not null;
@@ -214,8 +188,7 @@ alter table det_schools add column nearest_road_node_fid integer;
 alter table det_schools add column nearest_road_node_id integer;
 
 update det_schools set
-  nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 )
-  where lga_id in ( '726' , '275' , '515' , '465' , '118' , '311' );
+  nearest_road_node_fid = ( select fid from knn where f_table_name = 'road_nodes_connected' and ref_geometry = geometry and max_items = 1 );
 update det_schools set
   nearest_road_node_id = ( select node_id from road_nodes_connected where ogc_fid = nearest_road_node_fid )
   where nearest_road_node_fid is not null;
@@ -223,11 +196,11 @@ update det_schools set
 
 Press Ctrl-C to return to standard command prompt.
 
-### Create layer for government primary schools
+### Create layer for primary schools
 
 ```bash
 ### Create Government Primary Schools Layer
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where education_sector = 'Government' and school_type in ( 'Primary' , 'Pri/Sec' )" -nln det_gov_primary_schools -nlt POINT -t_srs EPSG:4326 -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from det_schools where zone = 'Yes' and campus_year_levels like 'Prep%'" -nln det_primary_schools -nlt POINT -t_srs EPSG:4326 -update
 ```
 
 ### Create and populate master look-up table
@@ -239,27 +212,27 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 create table mls_lut as
 select p.mb_16pid, p.nearest_road_node_id as start_node, k.*
 from knn k, abs_meshblocks_points p
-where f_table_name in ( 'det_gov_primary_schools' , 'det_gov_secondary_schools' )
+where f_table_name in ( 'det_primary_schools' , 'det_secondary_schools' )
 and k.ref_geometry = p.geometry
 and k.max_items = 5;
 
 -- Add school id to the LUT --
 alter table mls_lut add column school_no text;
 update mls_lut set
-  school_no = ( select school_no from det_gov_primary_schools d where d.ogc_fid = fid)
-  where f_table_name = 'det_gov_primary_schools';
+  school_no = ( select entity_code from det_primary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_primary_schools';
 
 -- Add school name to the LUT. May not be necessary for final output, but useful for debugging --;
 alter table mls_lut add column school_name text;
 update mls_lut set
-  school_name = ( select school_name from det_gov_primary_schools d where d.ogc_fid = fid)
-  where f_table_name = 'det_gov_primary_schools';
+  school_name = ( select school_name from det_primary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_primary_schools';
 
 -- Add the school's nearest road node to the LUT --;
 alter table mls_lut add column end_node integer;
 update mls_lut set
-  end_node = ( select nearest_road_node_id from det_gov_primary_schools d where d.ogc_fid = fid)
-  where f_table_name = 'det_gov_primary_schools';
+  end_node = ( select nearest_road_node_id from det_primary_schools d where d.ogc_fid = fid)
+  where f_table_name = 'det_primary_schools';
 
 create index mls_lut_start_node on mls_lut ( start_node );
 create index mls_lut_end_node on mls_lut ( end_node );
@@ -278,7 +251,7 @@ where mb_16pid = 'MB1620633179000';
 
 ```bash
 ### Generate Neighbourhood Local Primary School Table
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_gov_primary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_primary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select l.mb_16pid, l.school_no, l.school_name, l.distance as straignt_line_distance, min ( travel_distance ) as travel_distance, m.geometry as geometry from mls_lut l join abs_meshblocks m on l.mb_16pid = m.mb_16pid where f_table_name = 'det_primary_schools' group by l.mb_16pid" -nln mls_neighbourhood_local_primary_school -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
 ### Generate Local Primary School Zone Table
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_no, school_name, st_simplifypreservetopology ( st_union ( geometry ) , 0.00005 ) as geometry from mls_neighbourhood_local_primary_school group by school_no" -nln mls_local_primary_school_zone -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
@@ -299,7 +272,6 @@ ogr2ogr -f GeoJSON Data/mls_local_primary_school_zone.json MyLocalSchool.sqlite 
 
 ## To Do
 
-* [ ] substitute new school dataset into workflow
 * [ ] populate meshblock point layer with lga to make it easy to filter by different lgas
 * [ ] investigate if it's possible to exclude footbridges when routing for primary schools (to avoid Sanctuary Lakes-Altona Green Primary zone situation)
 * [ ] investigate phantom pedestrian underpass under Princess Freeway in OpenStreetMap; edit OSM if necessary
