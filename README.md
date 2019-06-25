@@ -97,6 +97,10 @@ delete from road_arcs where node_from = node_to;
 delete from road_arcs where st_length(geometry) = 0;
 delete from road_arcs where type in ('proposed');
 update road_arcs set name = '' where name is null;
+
+-- Exlude undesired road segments --;
+delete from road_arcs where osm_id = 77616006; -- Footbridge over Skeleton Creek behind Sanctuary Lakes;
+
 ```
 
 Press Ctrl-C to return to standard command prompt.
@@ -136,10 +140,17 @@ Press Ctrl-C to return to standard command prompt.
 ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select * from road_nodes where node_id in ( select node_id from road_nodes_connected_lut )" -nln road_nodes_connected -nlt POINT -t_srs EPSG:4326 -update
 ```
 
-#### Test the route between two random nodes
-
 ```sql
 .\spatialite MyLocalSchool.sqlite
+
+-- Remove freeway nodes located within meshblocks that aren't directly connected to frewway --;
+delete from road_nodes_connected where node_id in
+(
+select node_from from road_arcs where name like '% freeway' union
+select node_to from road_arcs where name like '% freeway'
+);
+
+-- Test the route between two random nodes --;
 select * from roads_net where nodefrom = 347257370 and nodeto = 347748405;
 ```
 
@@ -208,7 +219,7 @@ ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select *
 ```sql
 .\spatialite MyLocalSchool.sqlite
 
--- Create look-up-table of meshblock points and their nearest schools (up to 28 minutes for whole of Victoria, 1-2 minutes for Wyndham) --
+-- Create look-up-table of meshblock points and their nearest schools (5 seconds for Wyndham)
 create table mls_lut as
 select p.mb_16pid, p.nearest_road_node_id as start_node, k.*
 from knn k, abs_meshblocks_points p
@@ -216,19 +227,19 @@ where f_table_name in ( 'det_primary_schools' , 'det_secondary_schools' )
 and k.ref_geometry = p.geometry
 and k.max_items = 5;
 
--- Add school id to the LUT --
+-- Add school id to the LUT
 alter table mls_lut add column school_no text;
 update mls_lut set
   school_no = ( select entity_code from det_primary_schools d where d.ogc_fid = fid)
   where f_table_name = 'det_primary_schools';
 
--- Add school name to the LUT. May not be necessary for final output, but useful for debugging --;
+-- Add school name to the LUT. May not be necessary for final output, but useful for debugging
 alter table mls_lut add column school_name text;
 update mls_lut set
   school_name = ( select school_name from det_primary_schools d where d.ogc_fid = fid)
   where f_table_name = 'det_primary_schools';
 
--- Add the school's nearest road node to the LUT --;
+-- Add the school's nearest road node to the LUT
 alter table mls_lut add column end_node integer;
 update mls_lut set
   end_node = ( select nearest_road_node_id from det_primary_schools d where d.ogc_fid = fid)
@@ -237,11 +248,12 @@ update mls_lut set
 create index mls_lut_start_node on mls_lut ( start_node );
 create index mls_lut_end_node on mls_lut ( end_node );
 
+-- Add travel distance to nearest road node to the LUT (20 seconds for Wyndham)
 alter table mls_lut add column travel_distance real;
 update mls_lut set
   travel_distance = ( select max ( cost ) from roads_net where nodefrom = start_node and nodeto = end_node );
 
--- Test results for Sassafras Close Point Cook --;
+-- Test results for Sassafras Close Point Cook
 select mls_lut.*
 from mls_lut
 where mb_16pid = 'MB1620633179000';
@@ -272,14 +284,14 @@ ogr2ogr -f GeoJSON Data/mls_local_primary_school_zone.json MyLocalSchool.sqlite 
 
 ## To Do
 
+* [ ] test if deleting nodes solves issue with creek and freeway
+* [ ] web map
+  * [ ] add findmyschool vector tiles
+  * [ ] add DET schools
+  * [ ] add generated school zones
 * [ ] populate meshblock point layer with lga to make it easy to filter by different lgas
-* [ ] investigate if it's possible to exclude footbridges when routing for primary schools (to avoid Sanctuary Lakes-Altona Green Primary zone situation)
-* [ ] investigate phantom pedestrian underpass under Princess Freeway in OpenStreetMap; edit OSM if necessary
 * [ ] investigate "disconnected" road nodes issue
-* [ ] update Pozi map with generated school zones of Wyndham
-* [ ] re-run entire process again to ensure workflow is still valid and record the time taken for each operation
-* [ ] add findmyschool vector tiles to web map
-* [ ] add alternative entrance to Point Cook P-9 to ensure the neighbourhood across the street from the back entrance are included in school's zone
 * [ ] switch process to whole of Victoria instead of Wyndham (`.\spatialite_osm_overpass -d MyLocalSchool.sqlite -minx 141 -maxx 150 -miny -39 -maxy -34 -mode ROAD`)
+* [ ] experiment with excluding schools that have a `type` of 'Non standard' (eg Saltwater P-9 College) when generating zones, then add the zones at the end, cutting out a hole in the generated zones
 ```
 
