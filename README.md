@@ -16,7 +16,9 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 
 <a href="https://spark.adobe.com/video/WfP0wesXohBmw" target="_blank"><img src="https://content.screencast.com/users/groundtruth/folders/Snagit/media/784db926-9fd8-4805-9cb9-cf188e8a8c8d/09.09.2018-10.07.png" width="600" border="0"></a>
 
-#### [Interactive Map](https://mylocalschool.pozi.com/#/layers[existingprimaryschoolzones]/layers[primaryschools]/)
+#### [Interactive Map](https://mylocalschool.pozi.com/)
+
+<a href="https://mylocalschool.pozi.com/" target="_blank"><img src="https://i.imgur.com/IJTMDiJ.png" width="600" border="0"></a>
 
 ## Resources
 
@@ -33,13 +35,13 @@ My Local School started as a project for [GovHack 2018](https://hackerspace.govh
 
 ### Software
 
-* [QGIS](https://www.qgis.org/en/site/forusers/download.html)
-* QGIS OpenLayers plug-in (QGIS > Plugins > Manage and Install Plugins > OpenLayers Plugin)
 * Spatialite executables
   * [spatialite-gui](http://www.gaia-gis.it/gaia-sins/windows-bin-NEXTGEN-amd64/spatialite_gui-NG-win-amd64.7z)
   * [spatialite-cli](http://www.gaia-gis.it/gaia-sins/windows-bin-NEXTGEN-amd64/spatialite-cli-NG-win-amd64.7z)
   * [spatialite_network](http://www.gaia-gis.it/gaia-sins/windows-bin-amd64/spatialite_network-4.3.0a-win-amd64.7z)
   * [spatialite_osm_net](http://www.gaia-gis.it/gaia-sins/windows-bin-amd64/spatialite_osm_net-4.3.0a-win-amd64.7z)
+* [QGIS](https://www.qgis.org/en/site/forusers/download.html) (Not used directly to generate data, but useful for visualising results)
+  * QGIS OpenLayers plug-in (QGIS > Plugins > Manage and Install Plugins > OpenLayers Plugin)
 
 ## Process
 
@@ -285,10 +287,6 @@ ogr2ogr -f GeoJSON Data/mls_primary_school_zones.json MyLocalSchool.sqlite -dial
 ## To Do
 
 * [ ] test if deleting nodes solves issue with creek and freeway
-* [ ] web map
-  * [ ] add findmyschool vector tiles
-  * [ ] add DET schools
-  * [ ] add generated school zones
 * [ ] populate meshblock point layer with lga to make it easy to filter by different lgas
 * [ ] investigate "disconnected" road nodes issue
 * [ ] switch process to whole of Victoria instead of Wyndham (`.\spatialite_osm_overpass -d MyLocalSchool.sqlite -minx 141 -maxx 150 -miny -39 -maxy -34 -mode ROAD`)
