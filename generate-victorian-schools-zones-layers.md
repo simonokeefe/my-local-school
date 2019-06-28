@@ -214,10 +214,10 @@ The `catchments-primary-2020/9` now contains all the vector tiles needed to buil
 cd C:/MyLocalSchool
 
 #### Import folder of vector tiles into SQLite database (to enable further processing)
-ogr2ogr MyLocalSchool.sqlite C:/MyLocalSchool/Data/DET/findmyschool.vic.gov.au/tiles/catchments-primary-2020/9 catchments -nln det_primary_school_zones_unmerged -s_srs EPSG:3857 -t_srs EPSG:4326 -nlt PROMOTE_TO_MULTI -update -skipfailures
+ogr2ogr MyLocalSchool.sqlite C:/MyLocalSchool/Data/DET/findmyschool.vic.gov.au/tiles/catchments-primary-2020/9 catchments -nln tmp_det_primary_school_zones_unmerged -s_srs EPSG:3857 -t_srs EPSG:4326 -nlt PROMOTE_TO_MULTI -update -skipfailures
 
 #### Merge zone polygons that were split by tile boundaries
-ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_name, campus_name, year_level, boundary_year, entity_code, st_union ( geometry ) as geometry from det_primary_school_zones_unmerged group by entity_code" -nln det_primary_school_zones -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
+ogr2ogr MyLocalSchool.sqlite MyLocalSchool.sqlite -dialect sqlite -sql "select school_name, campus_name, year_level, boundary_year, entity_code, st_union ( geometry ) as geometry from tmp_det_primary_school_zones_unmerged group by entity_code" -nln det_primary_school_zones -nlt MULTIPOLYGON -t_srs EPSG:4326 -update
 
 #### Export to GeoJSON
 ogr2ogr -f GeoJSON Data/det_primary_school_zones.json MyLocalSchool.sqlite det_primary_school_zones -lco SIGNIFICANT_FIGURES=8
