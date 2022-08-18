@@ -291,5 +291,9 @@ ogr2ogr -f GeoJSON Data/mls_primary_school_zones.json MyLocalSchool.sqlite -dial
 * [ ] investigate "disconnected" road nodes issue
 * [ ] switch process to whole of Victoria instead of Wyndham (`.\spatialite_osm_overpass -d MyLocalSchool.sqlite -minx 141 -maxx 150 -miny -39 -maxy -34 -mode ROAD`)
 * [ ] experiment with excluding schools that have a `type` of 'Non standard' (eg Saltwater P-9 College) when generating zones, then add the zones at the end, cutting out a hole in the generated zones
-```
+
+## Other Resources
+
+* https://twitter.com/MarkusMannheim/status/1559797810308194304
+
 
